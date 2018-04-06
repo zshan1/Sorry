@@ -106,9 +106,9 @@ public class board {
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,2,15); 
 		}
-		 else{
+		else{
 			 System.out.println("Slide is not available");
-		 }
+		}
 		 
 	 }
 }
