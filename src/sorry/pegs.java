@@ -4,21 +4,23 @@ public class pegs {
 	private boolean at_Start;
 	private boolean at_Home;
 	private boolean at_SafeZone;
-	private int row;
-    private int col;
+	private int x;
+    private int y;
     
-    public int getRow() {
-        return row;
+    public int getX() {
+    	// TODO Auto-generated method stub
+        return x;
     }
-    public int getCol() {
-        return col;
+    public int getY() {
+    	// TODO Auto-generated method stub
+        return y;
     }
 
-    public void setRow(int row) {
-        this.row = row;
+    public void setX(int x) {
+        this.x = x;
     }
-    public void setCol(int col) {
-        this.col = col;
+    public void setY(int y) {
+        this.y = y;
     }
     
 	public void leaveStart()
