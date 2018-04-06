@@ -38,6 +38,6 @@ public class pegs {
 	}
  
 	public char charRepresentation() {
-		return '?';
+		return 'P';
 	}
 }
