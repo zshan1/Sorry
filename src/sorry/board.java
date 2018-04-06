@@ -72,21 +72,21 @@ public class board {
 		}
 	}
 	 public void slide(pegs peg){
-		 if(peg.getColor() != Color.RED && peg.getX() == 1 && peg.getY() == 0){
+		 if (peg.getColor() != Color.RED && peg.getX() == 1 && peg.getY() == 0){
 			
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,4,0);
 		 }
-	     else if(peg.getColor() != Color.RED && peg.getX() == 9 && peg.getY() == 0){
+	     else if (peg.getColor() != Color.RED && peg.getX() == 9 && peg.getY() == 0){
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,13,0);
 		}
 
-		 else if(peg.getColor() != Color.GREEN && peg.getX() == 0 && peg.getY() == 14){
+		 else if (peg.getColor() != Color.GREEN && peg.getX() == 0 && peg.getY() == 14){
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,0,11);
 		}
-		else if(peg.getColor() != Color.GREEN && peg.getX() == 0 && peg.getY() == 6){
+		else if (peg.getColor() != Color.GREEN && peg.getX() == 0 && peg.getY() == 6){
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,0,2);
 		}		
@@ -94,7 +94,7 @@ public class board {
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,15,4);
 		}
-		else if(peg.getColor() != Color.BLUE &&peg.getX() == 15 && peg.getY() == 9){
+		else if (peg.getColor() != Color.BLUE &&peg.getX() == 15 && peg.getY() == 9){
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,15,9);
 		}
@@ -102,7 +102,7 @@ public class board {
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,11,15);
 	    }
-		else if(peg.getColor() != Color.YELLOW && peg.getX() == 6 && peg.getY() == 15){
+		else if (peg.getColor() != Color.YELLOW && peg.getX() == 6 && peg.getY() == 15){
 				 board[peg.getX()][peg.getY()] = null;
 				 addPeg(peg,2,15); 
 		}
