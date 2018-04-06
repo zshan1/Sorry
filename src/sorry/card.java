@@ -6,6 +6,6 @@ public class card {
 		System.out.println("Where are these cards?!?");
 		System.out.println("They're right here");
 		System.out.println("They're right here");
-		System.out.println("They're right here");
+		System.out.println("They're right");
 	}
 }
