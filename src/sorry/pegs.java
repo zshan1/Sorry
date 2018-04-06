@@ -37,66 +37,7 @@ public class pegs {
 		return color;
 	}
  
-	public void bump(pegs peg)
-	{
-		if (peg.getColor()== Color.RED){
-			peg.setX(2);
-			peg.setY(6);
-		}
-		else if (peg.getColor()== Color.GREEN){
-			peg.setX(6);
-			peg.setY(13);
-		}
-		else if (peg.getColor()== Color.BLUE){
-			peg.setX(9);
-			peg.setY(2);
-		}
-		else if (peg.getColor()== Color.YELLOW){
-			peg.setX(13);
-			peg.setY(9);
-		}
-	}
-	public void start(pegs peg){
-		if (peg.getColor()== Color.RED){
-			peg.setX(4);
-			peg.setY(1);
-		}
-		else if (peg.getColor()== Color.GREEN){
-			peg.setX(1);
-			peg.setY(11);
-		}
-		else if (peg.getColor()== Color.BLUE){
-			peg.setX(14);
-			peg.setY(4);
-		}
-		else if (peg.getColor()== Color.YELLOW){
-			peg.setX(11);
-			peg.setY(14);
-		}
-	}
-	
 	public char charRepresentation() {
 		return '?';
-	}
-	
-	public static void main(String[] args)
-	{
-		// make a new pegs of each color
-		pegs peg1 = new pegs(Color.RED);
-		pegs peg2 = new pegs(Color.YELLOW);
-		pegs peg3 = new pegs(Color.GREEN);
-		pegs peg4 = new pegs(Color.BLUE);
-	
-		peg1.start(peg1);
-		System.out.println(peg1.getColor());
-		System.out.println(peg1.getX());
-		System.out.println(peg1.getY());
-		
-		peg2.setX(100);
-		peg2.setY(100);
-		peg2.bump(peg3);
-		System.out.println(peg3.getColor());
-		System.out.println(peg3.getX());
-		System.out.println(peg3.getY());
 	}
 }
