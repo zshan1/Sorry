@@ -74,6 +74,11 @@ public class pegs {
 			peg.setY(14);
 		}
 	}
+	
+	public char charRepresentation() {
+		return '?';
+	}
+	
 	public static void main(String[] args)
 	{
 		// make a new pegs of each color
@@ -89,9 +94,9 @@ public class pegs {
 		
 		peg2.setX(100);
 		peg2.setY(100);
-		peg2.bump(peg2);
-		System.out.println(peg2.getColor());
-		System.out.println(peg2.getX());
-		System.out.println(peg2.getY());
+		peg2.bump(peg3);
+		System.out.println(peg3.getColor());
+		System.out.println(peg3.getX());
+		System.out.println(peg3.getY());
 	}
 }
