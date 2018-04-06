@@ -23,8 +23,6 @@ public class board {
 	
 	public void movePiece(pegs peg, int x, int y) {
 		board[peg.getX()][peg.getY()] = null;
-		peg.setX(y);
-		peg.setY(y);
 		addPeg(peg,x,y);
 	}
 	
@@ -58,22 +56,62 @@ public class board {
 	public void start(pegs peg){
 		if (peg.getColor()== Color.RED){
 			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,4,1);
+			addPeg(peg,4,0);
 		}
 		else if (peg.getColor()== Color.GREEN){
 			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,11,1);
+			addPeg(peg,11,0);
 		}
 		else if (peg.getColor()== Color.BLUE){
 			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,14,4);
+			addPeg(peg,15,4);
 		}
 		else if (peg.getColor()== Color.YELLOW){
 			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,11,14);
+			addPeg(peg,11,15);
 		}
 	}
-	 public void slide(pegs peg1, pegs peg2){
+	 public void slide(pegs peg){
+		 if(peg.getColor() != Color.RED){
+			 if (peg.getX() == 1 && peg.getY() == 0){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,4,0);
+			 }
+			 else if(peg.getX() == 9 && peg.getY() == 0){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,13,0);
+			 }
+		 }
+		 if(peg.getColor() != Color.GREEN){
+			 if (peg.getX() == 0 && peg.getY() == 14){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,0,11);
+			 }
+			 else if(peg.getX() == 0 && peg.getY() == 6){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,0,2);
+			 }
+		 }
+		 if(peg.getColor() != Color.BLUE){
+			 if (peg.getX() == 15 && peg.getY() == 1){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,15,4);
+			 }
+			 else if(peg.getX() == 15 && peg.getY() == 9){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,15,9);
+			 }
+		 }
+		 if(peg.getColor() != Color.YELLOW){
+			 if (peg.getX() == 14 && peg.getY() == 15){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,11,15);
+			 }
+			 else if(peg.getX() == 6 && peg.getY() == 15){
+				 board[peg.getX()][peg.getY()] = null;
+				 addPeg(peg,2,15);
+			 }
+		 }
 		 
 	 }
 }
