@@ -6,6 +6,21 @@ public class pegs {
 	private boolean at_SafeZone;
 	private int row;
     private int col;
+    
+    public int getRow() {
+        return row;
+    }
+    public int getCol() {
+        return col;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+    public void setCol(int col) {
+        this.col = col;
+    }
+    
 	public void leaveStart()
 	{
 		at_Start = false;
@@ -21,17 +36,5 @@ public class pegs {
 		at_Start = false;
 		at_SafeZone = false;
 	}
-	 public int getRow() {
-	        return row;
-	    }
-	    public int getCol() {
-	        return col;
-	    }
-
-	    public void setRow(int row) {
-	        this.row = row;
-	    }
-	    public void setCol(int col) {
-	        this.col = col;
-	    }
+	
 }
