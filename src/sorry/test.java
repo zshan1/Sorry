@@ -12,6 +12,7 @@ public class test {
 	public test() {
 		board1 = new board();
 		
+		
 	}
 
 	public void play() {
@@ -20,25 +21,29 @@ public class test {
 	
 	public static void main(String[] args) {
 		test game = new test();
+		
 		pegs peg1 = new pegs(Color.RED);
 		pegs peg2 = new pegs(Color.GREEN);
 		pegs peg3 = new pegs(Color.YELLOW);
 		pegs peg4 = new pegs(Color.BLUE);
-		board1.addPeg(peg1, 5, 4);
-		board1.addPeg(peg2, 14, 15);
-		board1.addPeg(peg3, 12, 14);
+		board1.addPeg(peg1, 5, 0);
+		board1.addPeg(peg2, 13, 6);
 		game.play();
-		board1.bump(peg1,peg3);
-		System.out.println(peg1.getColor());
-		System.out.println(peg1.getX());
-		System.out.println(peg1.getY());
-		board1.bump(peg2,peg3);
-		System.out.println(peg2.getColor());
+//		board1.bump(peg1,peg3);
+//		System.out.println(peg1.getColor());
+//		System.out.println(peg1.getX());
+//		System.out.println(peg1.getY());
+//		board1.bump(peg2,peg3);
+//		System.out.println(peg2.getColor());
 		System.out.println(peg2.getX());
 		System.out.println(peg2.getY());
-		board1.slide(peg2);
+//		board1.slide(peg2);
+//		System.out.println(peg2.getX());
+//		System.out.println(peg2.getY());
+		board1.moveRegular(peg2,8);
+		game.play();
 		System.out.println(peg2.getX());
 		System.out.println(peg2.getY());
-		game.play();
+		
 	}
 }

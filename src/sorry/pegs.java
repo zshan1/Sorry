@@ -37,7 +37,6 @@ public class pegs {
 		return color;
 	}
  
-	public char charRepresentation() {
-		return 'P';
-	}
+
+	
 }
