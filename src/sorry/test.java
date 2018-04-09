@@ -27,7 +27,7 @@ public class test {
 		pegs peg3 = new pegs(Color.YELLOW);
 		pegs peg4 = new pegs(Color.BLUE);
 		board1.addPeg(peg1, 5, 0);
-		board1.addPeg(peg2, 13, 6);
+		board1.addPeg(peg2, 2, 2);
 		game.play();
 //		board1.bump(peg1,peg3);
 //		System.out.println(peg1.getColor());
@@ -40,7 +40,7 @@ public class test {
 //		board1.slide(peg2);
 //		System.out.println(peg2.getX());
 //		System.out.println(peg2.getY());
-		board1.moveRegular(peg2,8);
+		board1.bump(peg1,peg2);
 		game.play();
 		System.out.println(peg2.getX());
 		System.out.println(peg2.getY());

@@ -4,6 +4,7 @@ public class pegs {
 	private Color color;
 	private int x;
 	private int y;
+	private boolean isSafeStatus;
 	
 	public enum Color {
 		RED, GREEN, BLUE, YELLOW
@@ -37,6 +38,6 @@ public class pegs {
 		return color;
 	}
  
-
+   
 	
 }
