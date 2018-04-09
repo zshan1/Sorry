@@ -293,7 +293,7 @@ public class board {
 			addPeg(peg,15,11);
 		}
 	}
-	
+
 	public void setHome(pegs peg){
 		if (peg.getColor()== Color.RED){
 			addPeg(peg,1,4);
@@ -308,7 +308,7 @@ public class board {
 			addPeg(peg,14,11);
 		}
 	}
-	
+
 	public void slide(pegs peg){
 		for (int i = 1; i< 5; i++){
 			movePeg(peg,1);
@@ -376,39 +376,39 @@ public class board {
 	}
 	public boolean isSlide(pegs peg){
 		if (peg.getColor() != Color.RED && peg.getX() == 0 && peg.getY() == 1){
-		return true;
+			return true;
 		}
-	else if (peg.getColor() != Color.RED && peg.getX() == 0 && peg.getY() == 9){
-		return true;
-	}
-	
-	else if (peg.getColor() != Color.GREEN && peg.getX() == 14 && peg.getY() == 0){
-		return true;
-	
-	}
-	else if (peg.getColor() != Color.GREEN && peg.getX() == 6 && peg.getY() == 0){
-		return true;
-	
-	}
-	else if (peg.getColor() != Color.BLUE && peg.getX() == 1 && peg.getY() == 15){
-		return true;
-	
-	}
-	else if (peg.getColor() != Color.BLUE && peg.getX() == 9 && peg.getY() == 15){
-		return true;
-	
-	}
-	else if (peg.getColor() != Color.YELLOW && peg.getX() == 15 && peg.getY() == 14){
-		return true;
-	
-	}
-	else if (peg.getColor() != Color.YELLOW && peg.getX() == 15 && peg.getY() == 6){
-		return true; 
-	
-	}
-	else{
-		return false;
-	}
-		
+		else if (peg.getColor() != Color.RED && peg.getX() == 0 && peg.getY() == 9){
+			return true;
+		}
+
+		else if (peg.getColor() != Color.GREEN && peg.getX() == 14 && peg.getY() == 0){
+			return true;
+
+		}
+		else if (peg.getColor() != Color.GREEN && peg.getX() == 6 && peg.getY() == 0){
+			return true;
+
+		}
+		else if (peg.getColor() != Color.BLUE && peg.getX() == 1 && peg.getY() == 15){
+			return true;
+
+		}
+		else if (peg.getColor() != Color.BLUE && peg.getX() == 9 && peg.getY() == 15){
+			return true;
+
+		}
+		else if (peg.getColor() != Color.YELLOW && peg.getX() == 15 && peg.getY() == 14){
+			return true;
+
+		}
+		else if (peg.getColor() != Color.YELLOW && peg.getX() == 15 && peg.getY() == 6){
+			return true; 
+
+		}
+		else{
+			return false;
+		}
+
 	}
 }
