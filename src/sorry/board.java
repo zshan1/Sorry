@@ -39,41 +39,49 @@ public class board {
 			if(peg.getY()+a <= 15 && peg.getX()==0){
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+a;
+				System.out.println("1:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY()+a > 15 && peg.getX()==0) {
 				int temp1 = a - 15 +peg.getY();
 				int temp2 = 15;
+				System.out.println("2:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY() - a >= 0 && peg.getX() == 15) {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()-a;
+				System.out.println("3:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY() - a < 0 && peg.getX() == 15) {
 				int temp1 = 16 - a + peg.getY();
 				int temp2 = 0;
+				System.out.println("4:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()+a <= 15 && peg.getY()==15){
 				int temp1 = peg.getX()+a;
 				int temp2 = peg.getY();
+				System.out.println("5:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()+a > 15 && peg.getY()==15){
 				int temp1 = 15;
 				int temp2 = 30 - a - peg.getX();
+				System.out.println("6:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()-a >= 0 && peg.getY()==0){
 				int temp1 = peg.getX()-a;
 				int temp2 = 0;
+				System.out.println("7:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()-a < 0 && peg.getY()==0){
 				int temp1 = 0;
 				int temp2 = a-peg.getX();
+				System.out.println("8:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else{
@@ -83,42 +91,49 @@ public class board {
 			if(peg.getY()+a >= 0 && peg.getX()==0){
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+a;
+				System.out.println("8:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY()+a < 0 && peg.getX()==0) {
 				int temp1 = -a - peg.getY();
 				int temp2 = 0;
+				System.out.println("10:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY() - a <= 15 && peg.getX() == 15) {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()-a;
+				System.out.println("11:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY() - a > 15 && peg.getX() == 15) {
 				int temp1 = 30 + a - peg.getY();
 				int temp2 = 15;
+				System.out.println("12:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()+a < 0 && peg.getY()==15){
 				int temp1 = 0;
 				int temp2 = 15+a+peg.getX();
+				System.out.println("13:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()+a >= 0 && peg.getY()==15){
 				int temp1 = peg.getX()+a;
 				int temp2 = peg.getY();
+				System.out.println("14:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()-a <= 15 && peg.getY()==0){
 				int temp1 = peg.getX()-a;
 				int temp2 = 0;
+				System.out.println("15:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getX()-a > 15 && peg.getY()==0){
 				int temp1 = 15;
 				int temp2 = -a-15 + peg.getX();
-				System.out.println(temp2);
+				System.out.println("16:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
 			}
 			else{
@@ -138,6 +153,9 @@ public class board {
 			}else{
 				board[peg.getX()][peg.getY()] = null;
 				addPeg(peg,temp3,temp4);
+				if(isSlide(peg)){
+					slide(peg);
+				}
 			}
 		}
 		else if(peg.getColor()==Color.BLUE){
@@ -148,6 +166,9 @@ public class board {
 			}else{
 				board[peg.getX()][peg.getY()] = null;
 				addPeg(peg,temp3,temp4);
+				if(isSlide(peg)){
+					slide(peg);
+				}
 			}
 		}
 		else if(peg.getColor()==Color.YELLOW){
@@ -158,6 +179,9 @@ public class board {
 			}else{
 				board[peg.getX()][peg.getY()] = null;
 				addPeg(peg,temp3,temp4);
+				if(isSlide(peg)){
+					slide(peg);
+				}
 			}
 		}
 		else if(peg.getColor()==Color.GREEN){
@@ -168,6 +192,9 @@ public class board {
 			}else{
 				board[peg.getX()][peg.getY()] = null;
 				addPeg(peg,temp3,temp4);
+				if(isSlide(peg)){
+					slide(peg);
+				}
 			}
 		}
 	}
@@ -177,6 +204,9 @@ public class board {
 			if(!toPegSafeZone(peg,temp1,temp2)){			
 				board[peg.getX()][peg.getY()] = null;
 				addPeg(peg,temp1,temp2);
+				if(isSlide(peg)){
+					slide(peg);
+				}
 			}
 			else{
 				moveSafe(peg,temp1,temp2);
@@ -186,6 +216,9 @@ public class board {
 			bump(peg,board[temp1][temp2]);
 			board[peg.getX()][peg.getY()] = null;
 			addPeg(peg,temp1,temp2);
+			if(isSlide(peg)){
+				slide(peg);
+			}
 		}
 	}
 
@@ -217,7 +250,7 @@ public class board {
 	}
 	public void bump(pegs peg1, pegs peg2)
 	{
-		if(isSafe(peg2)||isHome(peg2)){
+		if(!isSafe(peg2)||!isHome(peg2)){
 			if (peg1.getColor() != peg2.getColor()){
 				if (peg2.getColor()== Color.RED){
 					board[peg2.getX()][peg2.getY()] = null;
@@ -260,44 +293,26 @@ public class board {
 			addPeg(peg,15,11);
 		}
 	}
+	
+	public void setHome(pegs peg){
+		if (peg.getColor()== Color.RED){
+			addPeg(peg,1,4);
+		}
+		else if (peg.getColor()== Color.GREEN){
+			addPeg(peg,11,1);
+		}
+		else if (peg.getColor()== Color.BLUE){
+			addPeg(peg,4,14);
+		}
+		else if (peg.getColor()== Color.YELLOW){
+			addPeg(peg,14,11);
+		}
+	}
+	
 	public void slide(pegs peg){
-		if (peg.getColor() != Color.RED && peg.getX() == 1 && peg.getY() == 0){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,4,0);
+		for (int i = 1; i< 5; i++){
+			movePeg(peg,1);
 		}
-		else if (peg.getColor() != Color.RED && peg.getX() == 9 && peg.getY() == 0){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,13,0);
-		}
-
-		else if (peg.getColor() != Color.GREEN && peg.getX() == 0 && peg.getY() == 14){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,0,11);
-		}
-		else if (peg.getColor() != Color.GREEN && peg.getX() == 0 && peg.getY() == 6){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,0,2);
-		}		
-		else if (peg.getColor() != Color.BLUE && peg.getX() == 15 && peg.getY() == 1){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,15,4);
-		}
-		else if (peg.getColor() != Color.BLUE && peg.getX() == 15 && peg.getY() == 9){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,15,9);
-		}
-		else if (peg.getColor() != Color.YELLOW && peg.getX() == 14 && peg.getY() == 15){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,11,15);
-		}
-		else if (peg.getColor() != Color.YELLOW && peg.getX() == 6 && peg.getY() == 15){
-			board[peg.getX()][peg.getY()] = null;
-			addPeg(peg,2,15); 
-		}
-		else{
-			System.out.println("Slide is not available");
-		}
-
 	}
 	public boolean isEmpty(int x, int y) {
 		if((board[x][y] != null))
@@ -358,5 +373,42 @@ public class board {
 		}else{
 			return false;
 		}
+	}
+	public boolean isSlide(pegs peg){
+		if (peg.getColor() != Color.RED && peg.getX() == 0 && peg.getY() == 1){
+		return true;
+		}
+	else if (peg.getColor() != Color.RED && peg.getX() == 0 && peg.getY() == 9){
+		return true;
+	}
+	
+	else if (peg.getColor() != Color.GREEN && peg.getX() == 14 && peg.getY() == 0){
+		return true;
+	
+	}
+	else if (peg.getColor() != Color.GREEN && peg.getX() == 6 && peg.getY() == 0){
+		return true;
+	
+	}
+	else if (peg.getColor() != Color.BLUE && peg.getX() == 1 && peg.getY() == 15){
+		return true;
+	
+	}
+	else if (peg.getColor() != Color.BLUE && peg.getX() == 9 && peg.getY() == 15){
+		return true;
+	
+	}
+	else if (peg.getColor() != Color.YELLOW && peg.getX() == 15 && peg.getY() == 14){
+		return true;
+	
+	}
+	else if (peg.getColor() != Color.YELLOW && peg.getX() == 15 && peg.getY() == 6){
+		return true; 
+	
+	}
+	else{
+		return false;
+	}
+		
 	}
 }

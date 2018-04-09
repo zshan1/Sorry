@@ -22,14 +22,16 @@ public class test {
 	public static void main(String[] args) {
 		test game = new test();
 		
-		pegs peg1 = new pegs(Color.RED);
-		pegs peg2 = new pegs(Color.GREEN);
+		pegs peg1 = new pegs(Color.BLUE);
+		pegs peg2 = new pegs(Color.YELLOW);
 		pegs peg3 = new pegs(Color.YELLOW);
-		pegs peg4 = new pegs(Color.BLUE);
-		board1.addPeg(peg1, 0, 8);
-		board1.addPeg(peg2, 14, 0);
+		pegs peg4 = new pegs(Color.YELLOW);
+		board1.addPeg(peg1, 15, 7);
+		board1.addPeg(peg2, 15, 5);
+		board1.addPeg(peg3, 15, 4);
+		board1.addPeg(peg4, 15, 3);
 		game.play();
-		board1.movePeg(peg1,9);
+		board1.movePeg(peg1,1);
 //		System.out.println(peg1.getColor());
 //		System.out.println(peg1.getX());
 //		System.out.println(peg1.getY());
