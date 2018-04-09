@@ -26,24 +26,27 @@ public class test {
 		pegs peg2 = new pegs(Color.GREEN);
 		pegs peg3 = new pegs(Color.YELLOW);
 		pegs peg4 = new pegs(Color.BLUE);
-		board1.addPeg(peg1, 5, 0);
-		board1.addPeg(peg2, 2, 2);
+		board1.addPeg(peg1, 0, 8);
+		board1.addPeg(peg2, 14, 0);
 		game.play();
-//		board1.bump(peg1,peg3);
+		board1.movePeg(peg1,9);
 //		System.out.println(peg1.getColor());
 //		System.out.println(peg1.getX());
 //		System.out.println(peg1.getY());
 //		board1.bump(peg2,peg3);
 //		System.out.println(peg2.getColor());
-		System.out.println(peg2.getX());
-		System.out.println(peg2.getY());
+//		System.out.println(peg2.getX());
+//		System.out.println(peg2.getY());
 //		board1.slide(peg2);
 //		System.out.println(peg2.getX());
 //		System.out.println(peg2.getY());
-		board1.bump(peg1,peg2);
+//		board1.swap(peg2,peg1);
+		
+//		System.out.println(peg1.getX());
+//		System.out.println(peg1.getY());
+//		System.out.println(peg2.getX());
+//		System.out.println(peg2.getY());
 		game.play();
-		System.out.println(peg2.getX());
-		System.out.println(peg2.getY());
 		
 	}
 }

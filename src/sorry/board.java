@@ -34,8 +34,8 @@ public class board {
 	}
 
 
-	public void moveRegular(pegs peg, int a) {
-		if(a>=0 && !isHome(peg)){
+	public void movePeg(pegs peg, int a) {
+		if(a >= 0 && !isHome(peg)){
 			if(peg.getY()+a <= 15 && peg.getX()==0){
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+a;
@@ -79,7 +79,7 @@ public class board {
 			else{
 				System.out.println("error");
 			}
-		}else if(a>=0 && !isHome(peg)){
+		}else if(a < 0 && !isHome(peg)){
 			if(peg.getY()+a >= 0 && peg.getX()==0){
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+a;
@@ -195,6 +195,26 @@ public class board {
 		board[peg.getX()][peg.getY()] = peg;
 	}
 
+	public void swap(pegs peg1, pegs peg2){
+		if(!isSafe(peg1)&&!isHome(peg1)&&!isSafe(peg2)&!isHome(peg2)){
+			if (peg1.getColor() != peg2.getColor()){
+				int temp1 = peg1.getX();
+				int temp2 = peg1.getY();
+				int temp3 = peg2.getX();
+				int temp4 = peg2.getY();
+				board[peg1.getX()][peg1.getY()] = null;
+				board[peg2.getX()][peg2.getY()] = null;
+				addPeg(peg1,temp3,temp4);
+				addPeg(peg2,temp1,temp2);
+			}
+			else{
+				System.out.println("You can not swap your peg");
+			}
+		}
+		else{
+			System.out.println("these pegs can not being swapped");
+		}
+	}
 	public void bump(pegs peg1, pegs peg2)
 	{
 		if(isSafe(peg2)||isHome(peg2)){
