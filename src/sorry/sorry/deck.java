@@ -140,6 +140,7 @@ public class deck {
 		int randomIndex = generator.nextInt(thedeck.length);
 		card[] result = new card[thedeck.length - 1];
 		discarddeck[cardCount]= (thedeck[randomIndex]);
+		//System.out.println("Discarded------------------- " + discarddeck[cardCount].getName());
 		cardCount ++;
 		System.arraycopy(thedeck, 0, result, 0, randomIndex);
 		if (thedeck.length != randomIndex) {
@@ -152,15 +153,20 @@ public class deck {
 		System.out.print(drawnCard.getName());
 		System.out.println(" Card");
 		printArray(result);
-		
+		if(thedeck.length == 0){
+			reset();
+		}
 	}
 	public void draw45(){
-		for(int i =0; i < 45; i++){
+		for(int i =0; i <= 45; i++){
 			draw();
 		}
 	}
 	public void reset(){
 		thedeck = discarddeck;
+		cardCount = 0;
+		System.out.println("Resetting deck");
+		shuffleArray();
 	}
 //	void arrayCount(){
 //		int counter = 0;
@@ -186,10 +192,9 @@ public class deck {
 		System.out.println();
 		//d.draw();
 		d.draw45();
+		d.draw45();
 		
-		if(thedeck.length <= 0){
-			d.reset();
-		}
+		
 		//System.out.println("The shuffled deck with a card drawn: ");
 		//d.printArray(result);
 		
