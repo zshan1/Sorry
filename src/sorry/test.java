@@ -26,7 +26,7 @@ public class test {
 		pegs peg2 = new pegs(Color.YELLOW);
 		pegs peg3 = new pegs(Color.YELLOW);
 		pegs peg4 = new pegs(Color.YELLOW);
-		board1.addPeg(peg1, 0, 0);
+		board1.addPeg(peg1, 15, 7);
 		board1.addPeg(peg2, 15, 5);
 		board1.addPeg(peg3, 15, 4);
 		board1.addPeg(peg4, 15, 3);
