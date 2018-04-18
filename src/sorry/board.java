@@ -33,6 +33,119 @@ public class board {
 		}
 	}
 
+	public void movePeg(pegs peg, deck d) {
+		if(d.getDrawnCard().getVal() >= 0 && !isHome(peg)){
+			if(peg.getY()+d.getDrawnCard().getVal() <= 15 && peg.getX()==0){
+				int temp1 = peg.getX();
+				int temp2 = peg.getY()+d.getDrawnCard().getVal();
+				System.out.println("1:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getY()+d.getDrawnCard().getVal() > 15 && peg.getX()==0) {
+				int temp1 = d.getDrawnCard().getVal() - 15 +peg.getY();
+				int temp2 = 15;
+				System.out.println("2:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getY() - d.getDrawnCard().getVal() >= 0 && peg.getX() == 15) {
+				int temp1 = peg.getX();
+				int temp2 = peg.getY()-d.getDrawnCard().getVal();
+				System.out.println("3:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getY() - d.getDrawnCard().getVal() < 0 && peg.getX() == 15) {
+				int temp1 = 16 - d.getDrawnCard().getVal() + peg.getY();
+				int temp2 = 0;
+				System.out.println("4:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()+d.getDrawnCard().getVal() <= 15 && peg.getY()==15){
+				int temp1 = peg.getX()+d.getDrawnCard().getVal();
+				int temp2 = peg.getY();
+				System.out.println("5:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()+d.getDrawnCard().getVal() > 15 && peg.getY()==15){
+				int temp1 = 15;
+				int temp2 = 30 - d.getDrawnCard().getVal() - peg.getX();
+				System.out.println("6:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()-d.getDrawnCard().getVal() >= 0 && peg.getY()==0){
+				int temp1 = peg.getX()-d.getDrawnCard().getVal();
+				int temp2 = 0;
+				System.out.println("7:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()-d.getDrawnCard().getVal() < 0 && peg.getY()==0){
+				int temp1 = 0;
+				int temp2 = d.getDrawnCard().getVal()-peg.getX();
+				System.out.println("8:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else{
+				System.out.println("error");
+			}
+		}else if(d.getDrawnCard().getVal() < 0 && !isHome(peg)){
+			if(peg.getY()+d.getDrawnCard().getVal() >= 0 && peg.getX()==0){
+				int temp1 = peg.getX();
+				int temp2 = peg.getY()+d.getDrawnCard().getVal();
+				System.out.println("8:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getY()+d.getDrawnCard().getVal() < 0 && peg.getX()==0) {
+				int temp1 = -d.getDrawnCard().getVal() - peg.getY();
+				int temp2 = 0;
+				System.out.println("10:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getY() - d.getDrawnCard().getVal() <= 15 && peg.getX() == 15) {
+				int temp1 = peg.getX();
+				int temp2 = peg.getY()-d.getDrawnCard().getVal();
+				System.out.println("11:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getY() - d.getDrawnCard().getVal() > 15 && peg.getX() == 15) {
+				int temp1 = 30 + d.getDrawnCard().getVal() - peg.getY();
+				int temp2 = 15;
+				System.out.println("12:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()+d.getDrawnCard().getVal() < 0 && peg.getY()==15){
+				int temp1 = 0;
+				int temp2 = 15+d.getDrawnCard().getVal()+peg.getX();
+				System.out.println("13:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()+d.getDrawnCard().getVal() >= 0 && peg.getY()==15){
+				int temp1 = peg.getX()+d.getDrawnCard().getVal();
+				int temp2 = peg.getY();
+				System.out.println("14:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()-d.getDrawnCard().getVal() <= 15 && peg.getY()==0){
+				int temp1 = peg.getX()-d.getDrawnCard().getVal();
+				int temp2 = 0;
+				System.out.println("15:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else if(peg.getX()-d.getDrawnCard().getVal() > 15 && peg.getY()==0){
+				int temp1 = 15;
+				int temp2 = -d.getDrawnCard().getVal()-15 + peg.getX();
+				System.out.println("16:"+temp1+"+ "+temp2);
+				check(peg, temp1,temp2);
+			}
+			else{
+				System.out.println("error");
+			}
+
+		}else{
+			System.out.println("Peg cant move");
+		}
+	}
+
+
+
 
 	public void movePeg(pegs peg, int a) {
 		if(a >= 0 && !isHome(peg)){

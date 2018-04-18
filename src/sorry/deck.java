@@ -7,6 +7,7 @@ public class deck {
     static card thedeck[] = new card[45];
     static card discarddeck[] = new card[45];
     int cardCount = 0;
+    card drawnCard;
     public deck() {
 
         // Boolean banana = true;
@@ -136,7 +137,7 @@ public class deck {
     }
 
     void draw(){
-        card drawnCard = new card();
+
         Random generator = new Random();
         int randomIndex = generator.nextInt(thedeck.length);
         card[] result = new card[thedeck.length - 1];
@@ -154,6 +155,9 @@ public class deck {
         System.out.println(" Card");
         printArray(result);
 
+    }
+    public card getDrawnCard(){
+        return drawnCard;
     }
     public void draw45(){
         for(int i =0; i < 45; i++){

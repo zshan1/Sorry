@@ -21,7 +21,8 @@ public class test {
 	
 	public static void main(String[] args) {
 		test game = new test();
-		
+		deck d = new deck();
+
 		pegs peg1 = new pegs(Color.BLUE);
 		pegs peg2 = new pegs(Color.YELLOW);
 		pegs peg3 = new pegs(Color.YELLOW);
@@ -32,6 +33,10 @@ public class test {
 		board1.addPeg(peg4, 15, 3);
 		game.play();
 		board1.movePeg(peg1,1);
+		d.draw();
+        board1.movePeg(peg1,d);
+        //d.draw();
+        //board1.movePeg(peg1,d);
 //		System.out.println(peg1.getColor());
 //		System.out.println(peg1.getX());
 //		System.out.println(peg1.getY());
