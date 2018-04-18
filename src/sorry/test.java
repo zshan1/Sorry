@@ -32,9 +32,15 @@ public class test {
 		board1.addPeg(peg3, 15, 4);
 		board1.addPeg(peg4, 15, 3);
 		game.play();
-		board1.movePeg(peg1,1);
+		//board1.movePeg(peg1,1);
 		d.draw();
         board1.movePeg(peg1,d);
+        game.play();
+		d.draw();
+		board1.movePeg(peg1,d);
+        game.play();
+		d.draw();
+		board1.movePeg(peg1,d);
         //d.draw();
         //board1.movePeg(peg1,d);
 //		System.out.println(peg1.getColor());
