@@ -54,7 +54,7 @@ public class board {
 				check(peg, temp1,temp2);
 			}
 			else if(peg.getY() - d.getDrawnCard().getVal() < 0 && peg.getX() == 15) {
-				int temp1 = 16 - d.getDrawnCard().getVal() + peg.getY();
+				int temp1 = 15 - d.getDrawnCard().getVal() + peg.getY();
 				int temp2 = 0;
 				System.out.println("4:"+temp1+"+ "+temp2);
 				check(peg, temp1,temp2);
