@@ -4,6 +4,8 @@ public class Players {
     Players(){
 
     }
+
+    pegs currentPlayer;
     //Blue pegs (P1)
     pegs peg1 = new pegs(pegs.Color.BLUE);
     pegs peg2 = new pegs(pegs.Color.BLUE);

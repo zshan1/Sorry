@@ -438,16 +438,16 @@ public class board {
 	}
 
 	public boolean toPegSafeZone(pegs peg, int x, int y){
-		if(peg.getColor()==Color.RED && x==0 && y>2){
+		if(peg.getColor()==Color.RED && x==0 && y==2){
 			return true;
 		}
-		else if(peg.getColor()==Color.BLUE && y==15 && x>2){
+		else if(peg.getColor()==Color.BLUE && y==15 && x==2){
 			return true;
 		}
-		else if(peg.getColor()==Color.YELLOW && x==15 && y<13){
+		else if(peg.getColor()==Color.YELLOW && x==15 && y==13){
 			return true;
 		}
-		else if(peg.getColor()==Color.GREEN && y==0 && x<13){
+		else if(peg.getColor()==Color.GREEN && y==0 && x==13){
 			return true;
 		}
 		else{

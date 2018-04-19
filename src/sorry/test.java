@@ -20,6 +20,7 @@ public class test {
 	}
 	
 	public static void main(String[] args) {
+
 		test game = new test();
 		deck d = new deck();
 		Players plyrs1 = new Players();
@@ -39,13 +40,13 @@ public class test {
 		game.play();
 		//board1.movePeg(peg1,1);
 		d.draw();
-        board1.movePeg(plyrs1.getPeg1(),d);
+        board1.movePeg(plyrs1.getPeg4(),d);
         game.play();
 		d.draw();
-		board1.movePeg(plyrs1.getPeg1(),d);
+		board1.movePeg(plyrs1.getPeg4(),d);
         game.play();
 		d.draw();
-		board1.movePeg(plyrs1.getPeg1(),d);
+		board1.movePeg(plyrs1.getPeg4(),d);
         //d.draw();
         //board1.movePeg(peg1,d);
 //		System.out.println(peg1.getColor());
