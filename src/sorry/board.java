@@ -6,7 +6,7 @@ public class board {
 	public static final int X_SIZE = 16;
 	public static final int Y_SIZE = 16;
 	private pegs[][] board = new pegs[X_SIZE][Y_SIZE];
-
+	public int turn = 1;
 	public void printBoard() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
@@ -141,6 +141,12 @@ public class board {
 
 		}else{
 			System.out.println("Peg cant move");
+		}
+		if(turn == 5){
+			setTurn(1);
+		}
+		else{
+			turn++;
 		}
 	}
 
@@ -523,5 +529,11 @@ public class board {
 			return false;
 		}
 
+	}
+	public int getTurn(){
+		return turn;
+	}
+	public void setTurn(int t){
+		turn = t;
 	}
 }
