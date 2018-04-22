@@ -4,6 +4,8 @@ public class pegs {
 	private Color color;
 	private int x;
 	private int y;
+	private String difficulty;
+	private String behavior;
 	private boolean isSafeStatus;
 	
 	public enum Color {
@@ -32,6 +34,25 @@ public class pegs {
     public void setY(int y) {
         this.y = y;
     }
+    
+    public String getdifficulty() {
+    	// TODO Auto-generated method stub
+        return difficulty;
+    }
+    public String getbehavior() {
+    	// TODO Auto-generated method stub
+        return behavior;
+    }
+    
+
+    public void setdifficulty(String x) {
+        this.difficulty = x;
+    }
+    public void setbehavior(String y) {
+        this.behavior = y;
+    }
+    
+    
     public Color getColor()
 	{
 		
