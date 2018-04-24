@@ -1,6 +1,5 @@
 package sorry;
 
-
 //go in here and look into giving them a quality or behavior
 //choice is rendered for players individually
 //set how many players - just dont init player if they arent playing
@@ -9,9 +8,8 @@ package sorry;
 //adjust start position based on color
 //be able to set color seperate from making a peg
 
-
 public class Players {
-	//Players()
+
 	Players() {
 
 	}
@@ -28,8 +26,8 @@ public class Players {
 	String behavior3 = "";
 	// get color
 	String color = "";
-	
-	//Initialize the pegs in default colors
+
+	// Initialize the pegs in default colors
 	// Blue pegs (P1)
 	pegs peg1 = new pegs(pegs.Color.BLUE);
 	pegs peg2 = new pegs(pegs.Color.BLUE);
@@ -53,9 +51,9 @@ public class Players {
 	pegs peg14 = new pegs(pegs.Color.RED);
 	pegs peg15 = new pegs(pegs.Color.RED);
 	pegs peg16 = new pegs(pegs.Color.RED);
-	
-	public final void colorChoice(String c){
-		if (c == "blue"){
+
+	public final void colorChoice(String c) {
+		if (c == "blue") {
 			// Blue pegs (P1)
 			pegs peg1 = new pegs(pegs.Color.BLUE);
 			pegs peg2 = new pegs(pegs.Color.BLUE);
@@ -79,7 +77,7 @@ public class Players {
 			pegs peg14 = new pegs(pegs.Color.RED);
 			pegs peg15 = new pegs(pegs.Color.RED);
 			pegs peg16 = new pegs(pegs.Color.RED);
-		}else if(c == "red"){
+		} else if (c == "red") {
 			// Blue pegs (P1)
 			pegs peg1 = new pegs(pegs.Color.RED);
 			pegs peg2 = new pegs(pegs.Color.RED);
@@ -103,8 +101,8 @@ public class Players {
 			pegs peg14 = new pegs(pegs.Color.BLUE);
 			pegs peg15 = new pegs(pegs.Color.BLUE);
 			pegs peg16 = new pegs(pegs.Color.BLUE);
-			
-		}else if(c =="green"){
+
+		} else if (c == "green") {
 			// Blue pegs (P1)
 			pegs peg1 = new pegs(pegs.Color.GREEN);
 			pegs peg2 = new pegs(pegs.Color.GREEN);
@@ -128,50 +126,83 @@ public class Players {
 			pegs peg14 = new pegs(pegs.Color.BLUE);
 			pegs peg15 = new pegs(pegs.Color.BLUE);
 			pegs peg16 = new pegs(pegs.Color.BLUE);
-			
-		}else if(c == "yellow"){
+
+		} else if (c == "yellow") {
 			// Blue pegs (P1)
-						pegs peg1 = new pegs(pegs.Color.YELLOW);
-						pegs peg2 = new pegs(pegs.Color.YELLOW);
-						pegs peg3 = new pegs(pegs.Color.YELLOW);
-						pegs peg4 = new pegs(pegs.Color.YELLOW);
+			pegs peg1 = new pegs(pegs.Color.YELLOW);
+			pegs peg2 = new pegs(pegs.Color.YELLOW);
+			pegs peg3 = new pegs(pegs.Color.YELLOW);
+			pegs peg4 = new pegs(pegs.Color.YELLOW);
 
-						// Yellow Pegs (P2)
-						pegs peg5 = new pegs(pegs.Color.GREEN);
-						pegs peg6 = new pegs(pegs.Color.GREEN);
-						pegs peg7 = new pegs(pegs.Color.GREEN);
-						pegs peg8 = new pegs(pegs.Color.GREEN);
+			// Yellow Pegs (P2)
+			pegs peg5 = new pegs(pegs.Color.GREEN);
+			pegs peg6 = new pegs(pegs.Color.GREEN);
+			pegs peg7 = new pegs(pegs.Color.GREEN);
+			pegs peg8 = new pegs(pegs.Color.GREEN);
 
-						// Green Pegs (P3)
-						pegs peg9 = new pegs(pegs.Color.RED);
-						pegs peg10 = new pegs(pegs.Color.RED);
-						pegs peg11 = new pegs(pegs.Color.RED);
-						pegs peg12 = new pegs(pegs.Color.RED);
+			// Green Pegs (P3)
+			pegs peg9 = new pegs(pegs.Color.RED);
+			pegs peg10 = new pegs(pegs.Color.RED);
+			pegs peg11 = new pegs(pegs.Color.RED);
+			pegs peg12 = new pegs(pegs.Color.RED);
 
-						// Red Pegs (P4)
-						pegs peg13 = new pegs(pegs.Color.BLUE);
-						pegs peg14 = new pegs(pegs.Color.BLUE);
-						pegs peg15 = new pegs(pegs.Color.BLUE);
-						pegs peg16 = new pegs(pegs.Color.BLUE);
+			// Red Pegs (P4)
+			pegs peg13 = new pegs(pegs.Color.BLUE);
+			pegs peg14 = new pegs(pegs.Color.BLUE);
+			pegs peg15 = new pegs(pegs.Color.BLUE);
+			pegs peg16 = new pegs(pegs.Color.BLUE);
 		}
 	}
 
+	public void p1Init(board board1, String c) {
 
-	public void p1Init(board board1) {
-
-		board1.addPeg(peg1, 1, 15);
-		board1.addPeg(peg2, 2, 15);
-		board1.addPeg(peg3, 3, 15);
-		board1.addPeg(peg4, 4, 15);
+		if (c == "blue") {
+			board1.addPeg(peg1, 1, 15);
+			board1.addPeg(peg2, 2, 15);
+			board1.addPeg(peg3, 3, 15);
+			board1.addPeg(peg4, 4, 15);
+		} else if (c == "yellow") {
+			board1.addPeg(peg1, 15, 11);
+			board1.addPeg(peg2, 15, 12);
+			board1.addPeg(peg3, 15, 13);
+			board1.addPeg(peg4, 15, 14);
+		} else if (c == "green") {
+			board1.addPeg(peg1, 14, 0);
+			board1.addPeg(peg2, 13, 0);
+			board1.addPeg(peg3, 12, 0);
+			board1.addPeg(peg4, 11, 0);
+		} else {
+			board1.addPeg(peg1, 0, 1);
+			board1.addPeg(peg2, 0, 2);
+			board1.addPeg(peg3, 0, 3);
+			board1.addPeg(peg4, 0, 4);
+		}
 
 	}
 
-	public void p2Init(board board1, String d, String b) {
-
-		board1.addPeg(peg5, 15, 11);
-		board1.addPeg(peg6, 15, 12);
-		board1.addPeg(peg7, 15, 13);
-		board1.addPeg(peg8, 15, 14);
+	public void p2Init(board board1, String d, String b, String c) {
+		
+		if (c == "blue") {
+			board1.addPeg(peg5, 15, 11);
+			board1.addPeg(peg6, 15, 12);
+			board1.addPeg(peg7, 15, 13);
+			board1.addPeg(peg8, 15, 14);
+		} else if (c == "yellow") {
+			board1.addPeg(peg5, 14, 0);
+			board1.addPeg(peg6, 13, 0);
+			board1.addPeg(peg7, 12, 0);
+			board1.addPeg(peg8, 11, 0);
+		} else if (c == "green") {
+			board1.addPeg(peg5, 15, 11);
+			board1.addPeg(peg6, 15, 12);
+			board1.addPeg(peg7, 15, 13);
+			board1.addPeg(peg8, 15, 14);
+		} else {
+			board1.addPeg(peg5, 15, 11);
+			board1.addPeg(peg6, 15, 12);
+			board1.addPeg(peg7, 15, 13);
+			board1.addPeg(peg8, 15, 14);
+		}
 
 		peg5.setdifficulty(d);
 		peg6.setdifficulty(d);
@@ -184,13 +215,30 @@ public class Players {
 		peg8.setbehavior(b);
 	}
 
-	public void p3Init(board board1, String d, String b) {
-
-		board1.addPeg(peg9, 14, 0);
-		board1.addPeg(peg10, 13, 0);
-		board1.addPeg(peg11, 12, 0);
-		board1.addPeg(peg12, 11, 0);
+	public void p3Init(board board1, String d, String b, String c) {
 		
+		if (c == "blue") {
+			board1.addPeg(peg9, 14, 0);
+			board1.addPeg(peg10, 13, 0);
+			board1.addPeg(peg11, 12, 0);
+			board1.addPeg(peg12, 11, 0);
+		} else if (c == "yellow") {
+			board1.addPeg(peg9, 0, 1);
+			board1.addPeg(peg10, 0, 2);
+			board1.addPeg(peg11, 0, 3);
+			board1.addPeg(peg12, 0, 4);
+		} else if (c == "green") {
+			board1.addPeg(peg9, 0, 1);
+			board1.addPeg(peg10, 0, 2);
+			board1.addPeg(peg11, 0, 3);
+			board1.addPeg(peg12, 0, 4);
+		} else {
+			board1.addPeg(peg9, 14, 0);
+			board1.addPeg(peg10, 13, 0);
+			board1.addPeg(peg11, 12, 0);
+			board1.addPeg(peg12, 11, 0);
+		}
+
 		peg9.setdifficulty(d);
 		peg10.setdifficulty(d);
 		peg11.setdifficulty(d);
@@ -202,13 +250,30 @@ public class Players {
 		peg12.setbehavior(b);
 	}
 
-	public void p4Init(board board1, String d, String b) {
+	public void p4Init(board board1, String d, String b, String c) {
 
-		board1.addPeg(peg13, 0, 1);
-		board1.addPeg(peg14, 0, 2);
-		board1.addPeg(peg15, 0, 3);
-		board1.addPeg(peg16, 0, 4);
-		
+		if (c == "blue") {
+			board1.addPeg(peg13, 0, 1);
+			board1.addPeg(peg14, 0, 2);
+			board1.addPeg(peg15, 0, 3);
+			board1.addPeg(peg16, 0, 4);
+		} else if (c == "yellow") {
+			board1.addPeg(peg13, 1, 15);
+			board1.addPeg(peg14, 2, 15);
+			board1.addPeg(peg15, 3, 15);
+			board1.addPeg(peg16, 4, 15);
+		} else if (c == "green") {
+			board1.addPeg(peg13, 1, 15);
+			board1.addPeg(peg14, 2, 15);
+			board1.addPeg(peg15, 3, 15);
+			board1.addPeg(peg16, 4, 15);
+		} else {
+			board1.addPeg(peg13, 1, 15);
+			board1.addPeg(peg14, 2, 15);
+			board1.addPeg(peg15, 3, 15);
+			board1.addPeg(peg16, 4, 15);
+		}
+
 		peg13.setdifficulty(d);
 		peg14.setdifficulty(d);
 		peg15.setdifficulty(d);
@@ -219,8 +284,6 @@ public class Players {
 		peg15.setbehavior(b);
 		peg16.setbehavior(b);
 	}
-
-
 
 	pegs getPeg1() {
 		return peg1;
