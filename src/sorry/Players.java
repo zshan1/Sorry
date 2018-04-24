@@ -368,22 +368,17 @@ public class Players {
     public void niceEasy(board b, int move) {
         if (b.getTurn() == 2 && player2()[1].getdifficulty() == "easy" && player2()[1].getbehavior() == "nice") {
 //            b.movePeg(player2()[0], move);
-            b.setBumpcheck(true);
-            System.out.println(b.getBumpCheck());
+//            b.setBumpcheck(true);
+//            System.out.println(b.getBumpCheck());
 
-            for (int i = 0; i < player2().length; i++) {
-                if (b.getBumpCheck() == true) {
-                    System.out.println(i);
-                    b.movePeg(player2()[i], move);
-                  //  b.setBumpcheck(true);
-                    break;
-                }
-                else{
-                    System.out.println("ttt"+i);
-                    System.out.println("Nothing happened");
-                }
+            for (int i = 0; i < player2().length ; i++) {
+            	if(b.getNiceMove() <= 0) {
+					b.movePeg(player2()[i], move, true);
+					//b.setNiceMove(0);
+				}
 
             }
+			b.setNiceMove(0);
             //if (b.getBumpCheck()==true)
         }
         if (b.getTurn() == 3 && player3()[1].getdifficulty() == "easy" && player3()[1].getbehavior() == "dumb") {
@@ -391,7 +386,7 @@ public class Players {
                 System.out.println(b.getBumpCheck());
                 if (b.getBumpCheck() == true) {
                     //System.out.println("Nothing happened");
-                    b.movePeg(player3()[i], move);
+                    b.movePeg(player3()[i], move,true);
                     break;
                 }
                 else{
@@ -402,7 +397,7 @@ public class Players {
         if (b.getTurn() == 4 && player4()[1].getdifficulty() == "easy" && player4()[1].getbehavior() == "dumb") {
             for (int i = 0; i < player4().length; i++) {
                 if (b.getBumpCheck() == true) {
-                    b.movePeg(player4()[i], move);
+                    b.movePeg(player4()[i], move,true);
                     break;
                 }
             }

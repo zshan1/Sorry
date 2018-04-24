@@ -3,7 +3,8 @@ package sorry;
 import sorry.pegs.Color;
 
 public class board {
-	boolean bumpcheck;
+	boolean bumpcheck = true;
+	int niceMove = 0;
 	public static final int X_SIZE = 16;
 	public static final int Y_SIZE = 16;
 	private pegs[][] board = new pegs[X_SIZE][Y_SIZE];
@@ -34,13 +35,17 @@ public class board {
 		}
 	}
 
-	public void movePeg(pegs peg, deck d) {
+	public void movePeg(pegs peg, deck d, boolean nice) {
 		if(d.getDrawnCard().getVal() >= 0 && !isHome(peg)){
 			if(peg.getY()+d.getDrawnCard().getVal() <= 15 && peg.getX()==0){
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+d.getDrawnCard().getVal();
 				System.out.println("1:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+				if(nice == false){
+				check(peg, temp1,temp2);}
+				else{
+				    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY()+d.getDrawnCard().getVal() > 15 && peg.getX()==0) {
 				int temp1 = d.getDrawnCard().getVal() - 15 +peg.getY();
@@ -52,37 +57,61 @@ public class board {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()-d.getDrawnCard().getVal();
 				System.out.println("3:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - d.getDrawnCard().getVal() < 0 && peg.getX() == 15) {
 				int temp1 = 15 - d.getDrawnCard().getVal() + peg.getY();
 				int temp2 = 0;
 				System.out.println("4:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+d.getDrawnCard().getVal() <= 15 && peg.getY()==15){
 				int temp1 = peg.getX()+d.getDrawnCard().getVal();
 				int temp2 = peg.getY();
 				System.out.println("5:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+d.getDrawnCard().getVal() > 15 && peg.getY()==15){
 				int temp1 = 15;
 				int temp2 = 30 - d.getDrawnCard().getVal() - peg.getX();
 				System.out.println("6:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-d.getDrawnCard().getVal() >= 0 && peg.getY()==0){
 				int temp1 = peg.getX()-d.getDrawnCard().getVal();
 				int temp2 = 0;
 				System.out.println("7:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-d.getDrawnCard().getVal() < 0 && peg.getY()==0){
 				int temp1 = 0;
 				int temp2 = d.getDrawnCard().getVal()-peg.getX();
 				System.out.println("8:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else{
 				System.out.println("error");
@@ -92,49 +121,81 @@ public class board {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+d.getDrawnCard().getVal();
 				System.out.println("8:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY()+d.getDrawnCard().getVal() < 0 && peg.getX()==0) {
 				int temp1 = -d.getDrawnCard().getVal() - peg.getY();
 				int temp2 = 0;
 				System.out.println("10:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - d.getDrawnCard().getVal() <= 15 && peg.getX() == 15) {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()-d.getDrawnCard().getVal();
 				System.out.println("11:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - d.getDrawnCard().getVal() > 15 && peg.getX() == 15) {
 				int temp1 = 30 + d.getDrawnCard().getVal() - peg.getY();
 				int temp2 = 15;
 				System.out.println("12:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+d.getDrawnCard().getVal() < 0 && peg.getY()==15){
 				int temp1 = 0;
 				int temp2 = 15+d.getDrawnCard().getVal()+peg.getX();
 				System.out.println("13:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+d.getDrawnCard().getVal() >= 0 && peg.getY()==15){
 				int temp1 = peg.getX()+d.getDrawnCard().getVal();
 				int temp2 = peg.getY();
 				System.out.println("14:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-d.getDrawnCard().getVal() <= 15 && peg.getY()==0){
 				int temp1 = peg.getX()-d.getDrawnCard().getVal();
 				int temp2 = 0;
 				System.out.println("15:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-d.getDrawnCard().getVal() > 15 && peg.getY()==0){
 				int temp1 = 15;
 				int temp2 = -d.getDrawnCard().getVal()-15 + peg.getX();
 				System.out.println("16:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else{
 				System.out.println("error");
@@ -154,55 +215,87 @@ public class board {
 
 
 
-	public void movePeg(pegs peg, int a) {
+	public void movePeg(pegs peg, int a, boolean nice) {
 		if(a >= 0 && !isHome(peg)){
 			if(peg.getY()+a <= 15 && peg.getX()==0){
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+a;
 				System.out.println("1:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY()+a > 15 && peg.getX()==0) {
 				int temp1 = a - 15 +peg.getY();
 				int temp2 = 15;
 				System.out.println("2:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - a >= 0 && peg.getX() == 15) {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()-a;
 				System.out.println("3:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - a < 0 && peg.getX() == 15) {
 				int temp1 = 16 - a + peg.getY();
 				int temp2 = 0;
 				System.out.println("4:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+a <= 15 && peg.getY()==15){
 				int temp1 = peg.getX()+a;
 				int temp2 = peg.getY();
 				System.out.println("5:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+a > 15 && peg.getY()==15){
 				int temp1 = 15;
 				int temp2 = 30 - a - peg.getX();
 				System.out.println("6:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-a >= 0 && peg.getY()==0){
 				int temp1 = peg.getX()-a;
 				int temp2 = 0;
 				System.out.println("7:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-a < 0 && peg.getY()==0){
 				int temp1 = 0;
 				int temp2 = a-peg.getX();
 				System.out.println("8:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else{
 				System.out.println("error");
@@ -212,49 +305,81 @@ public class board {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()+a;
 				System.out.println("8:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY()+a < 0 && peg.getX()==0) {
 				int temp1 = -a - peg.getY();
 				int temp2 = 0;
 				System.out.println("10:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+				if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - a <= 15 && peg.getX() == 15) {
 				int temp1 = peg.getX();
 				int temp2 = peg.getY()-a;
 				System.out.println("11:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getY() - a > 15 && peg.getX() == 15) {
 				int temp1 = 30 + a - peg.getY();
 				int temp2 = 15;
 				System.out.println("12:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+a < 0 && peg.getY()==15){
 				int temp1 = 0;
 				int temp2 = 15+a+peg.getX();
 				System.out.println("13:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()+a >= 0 && peg.getY()==15){
 				int temp1 = peg.getX()+a;
 				int temp2 = peg.getY();
 				System.out.println("14:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-a <= 15 && peg.getY()==0){
 				int temp1 = peg.getX()-a;
 				int temp2 = 0;
 				System.out.println("15:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+				if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else if(peg.getX()-a > 15 && peg.getY()==0){
 				int temp1 = 15;
 				int temp2 = -a-15 + peg.getX();
 				System.out.println("16:"+temp1+"+ "+temp2);
-				check(peg, temp1,temp2);
+                if(nice == false){
+                    check(peg, temp1,temp2);}
+                else{
+                    checkNice(peg, temp1,temp2);
+                }
 			}
 			else{
 				System.out.println("error");
@@ -320,9 +445,7 @@ public class board {
 	}
 
 	public void check(pegs peg, int temp1, int temp2){
-		int i =0;
-//		setBumpcheck(true);
-		System.out.println("yyyyyy"+getBumpCheck());
+
 		if(isEmpty(temp1,temp2)){
 			if(!toPegSafeZone(peg,temp1,temp2)){
 
@@ -338,7 +461,6 @@ public class board {
 		}
 		//else if(peg.getdifficulty()!="nice")
 		else{
-			setBumpcheck(false);
 			bump(peg,board[temp1][temp2]);
 			board[peg.getX()][peg.getY()] = null;
 			addPeg(peg,temp1,temp2);
@@ -347,6 +469,33 @@ public class board {
 			}
 		}
 	}
+    public void checkNice(pegs peg, int temp1, int temp2){
+        int i =0;
+
+
+        if(isEmpty(temp1,temp2)){
+            setBumpcheck(true);
+
+            if(!toPegSafeZone(peg,temp1,temp2)){
+
+                board[peg.getX()][peg.getY()] = null;
+                addPeg(peg,temp1,temp2);
+                if(isSlide(peg)){
+                    slide(peg);
+                }
+            }
+            else{
+                moveSafe(peg,temp1,temp2);
+            }
+            niceMove++;
+        }
+        //else if(peg.getdifficulty()!="nice")
+        else {
+            setBumpcheck(false);
+            System.out.println("yyyyyy"+getBumpCheck());
+
+        }
+    }
 
 	public void addPeg(pegs peg, int x, int y) {
 		peg.setX(x);
@@ -439,7 +588,7 @@ public class board {
 
 	public void slide(pegs peg){
 		for (int i = 1; i< 5; i++){
-			movePeg(peg,1);
+			movePeg(peg,1,false);
 		}
 	}
 	public boolean isEmpty(int x, int y) {
@@ -551,4 +700,11 @@ public class board {
 	void setBumpcheck(boolean tf){
 		bumpcheck = tf;
 	}
+	int getNiceMove(){
+	    return niceMove;
+    }
+    void setNiceMove(int m){
+	    niceMove = m;
+    }
+
 }

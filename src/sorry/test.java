@@ -31,10 +31,10 @@ public class test {
 		test game = new test();
 		deck d = new deck();
 		Players plyrs1 = new Players();
-        plyrs1.p1Init(board1);
-        plyrs1.p2Init(board1,easy,nice);
-        plyrs1.p3Init(board1, easy, nice);
-        plyrs1.p4Init(board1, easy, nice);
+        plyrs1.p1Init(board1,"Blue");
+        plyrs1.p2Init(board1,easy,nice,"Yellow");
+        plyrs1.p3Init(board1, easy, nice, "Green");
+        plyrs1.p4Init(board1, easy, nice,"Red");
 
 //		pegs peg1 = new pegs(Color.BLUE);
 //		pegs peg2 = new pegs(Color.YELLOW);

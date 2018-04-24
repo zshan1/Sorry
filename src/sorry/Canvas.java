@@ -80,8 +80,8 @@ public class Canvas extends Pane {
 	 GridPane root = new GridPane();
      root.setPrefWidth(720);
      root.setPrefHeight(720);
-     root.setStyle("-fx-background-image: url('file:/Users/apple/Documents/GitHub/Sorry/src/board.png');"+
-             "-fx-background-size: 720 720;"+"fx-background-position: center;");
+     //root.setStyle("-fx-background-image: url('file:/Users/apple/Documents/GitHub/Sorry/src/board.png');"+
+           //  "-fx-background-size: 720 720;"+"fx-background-position: center;");
      final int size = 16 ;
      for (int row = 0; row < size; row++) {
          for (int col = 0; col < size; col ++) {
@@ -209,7 +209,7 @@ public class Canvas extends Pane {
              System.out.println("bounds = " +bounds);
              System.out.println("centerX = " +GridPane.getColumnIndex(target));
              System.out.println("centerY = " +GridPane.getRowIndex(target));
-             System.out.println(sorry.board.isEmpty(GridPane.getColumnIndex(target),GridPane.getRowIndex(target)));
+             //System.out.println(sorry.board.isEmpty(GridPane.getColumnIndex(target),GridPane.getRowIndex(target)));
 			}      
      });
      
