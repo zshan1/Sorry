@@ -26,15 +26,17 @@ public class test {
 		computerplayer cp4 = new computerplayer();
 		String test = "dumb";
 		String smart = "smart";
+		String hard = "hard";
+		String mean = "mean";
 		String nice = "nice";
 		String easy = "easy";
 		test game = new test();
 		deck d = new deck();
 		Players plyrs1 = new Players();
-        plyrs1.p1Init(board1,"Blue");
-        plyrs1.p2Init(board1,easy,nice,"Yellow");
-        plyrs1.p3Init(board1, easy, nice, "Green");
-        plyrs1.p4Init(board1, easy, nice,"Red");
+        plyrs1.p1Init(board1,"blue");
+        plyrs1.p2Init(board1,easy,nice,"yellow");
+        plyrs1.p3Init(board1, hard, nice, "green");
+        plyrs1.p4Init(board1, hard, mean,"red");
 
 //		pegs peg1 = new pegs(Color.BLUE);
 //		pegs peg2 = new pegs(Color.YELLOW);
@@ -44,9 +46,9 @@ public class test {
 //		board1.addPeg(peg2, 15, 5);
 //		board1.addPeg(peg3, 15, 4);
 //		board1.addPeg(peg4, 15, 3);
-		game.play();
+//		game.play();
 		//board1.movePeg(peg1,1);
-		d.draw();
+		//d.draw();
 //        board1.movePeg(plyrs1.getPeg4(),d);
 //        game.play();
 //		d.draw();
@@ -60,10 +62,20 @@ public class test {
 //		game.play();
 //		d.draw();
 //		board1.movePeg(plyrs1.getPeg12(),13);
-//		game.play();
-//		d.draw();
+		game.play();
+		d.draw();
 		board1.setTurn(2);
-		plyrs1.niceEasy(board1,14);
+		plyrs1.easyNice(board1,d);
+		game.play();
+
+		d.draw();
+		board1.setTurn(board1.getTurn() + 1);
+		plyrs1.hardNice(board1, d);
+		game.play();
+
+		//d.draw();
+		board1.setTurn(board1.getTurn() + 1);
+		plyrs1.hardMean(board1, d);
 		game.play();
 //		d.draw();
         //d.draw();

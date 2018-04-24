@@ -8,6 +8,8 @@ package sorry;
 //adjust start position based on color
 //be able to set color seperate from making a peg
 
+import java.util.Random;
+
 public class Players {
 
 	Players() {
@@ -167,10 +169,10 @@ public class Players {
 			board1.addPeg(peg3, 15, 13);
 			board1.addPeg(peg4, 15, 14);
 		} else if (c == "green") {
-			board1.addPeg(peg1, 14, 0);
-			board1.addPeg(peg2, 13, 0);
-			board1.addPeg(peg3, 12, 0);
-			board1.addPeg(peg4, 11, 0);
+			board1.addPeg(peg1, 11, 0);
+			board1.addPeg(peg2, 12, 0);
+			board1.addPeg(peg3, 13, 0);
+			board1.addPeg(peg4, 14, 0);
 		} else {
 			board1.addPeg(peg1, 0, 1);
 			board1.addPeg(peg2, 0, 2);
@@ -188,10 +190,10 @@ public class Players {
 			board1.addPeg(peg7, 15, 13);
 			board1.addPeg(peg8, 15, 14);
 		} else if (c == "yellow") {
-			board1.addPeg(peg5, 14, 0);
-			board1.addPeg(peg6, 13, 0);
-			board1.addPeg(peg7, 12, 0);
-			board1.addPeg(peg8, 11, 0);
+			board1.addPeg(peg5, 11, 0);
+			board1.addPeg(peg6, 12, 0);
+			board1.addPeg(peg7, 13, 0);
+			board1.addPeg(peg8, 14, 0);
 		} else if (c == "green") {
 			board1.addPeg(peg5, 15, 11);
 			board1.addPeg(peg6, 15, 12);
@@ -233,10 +235,10 @@ public class Players {
 			board1.addPeg(peg11, 0, 3);
 			board1.addPeg(peg12, 0, 4);
 		} else {
-			board1.addPeg(peg9, 14, 0);
-			board1.addPeg(peg10, 13, 0);
-			board1.addPeg(peg11, 12, 0);
-			board1.addPeg(peg12, 11, 0);
+			board1.addPeg(peg9, 11, 0);
+			board1.addPeg(peg10, 12, 0);
+			board1.addPeg(peg11, 13, 0);
+			board1.addPeg(peg12, 14, 0);
 		}
 
 		peg9.setdifficulty(d);
@@ -365,15 +367,15 @@ public class Players {
 		pegs p4Array[] = {getPeg13(), getPeg14(), getPeg15(),getPeg16()};
 		return p4Array;
 	}
-    public void niceEasy(board b, int move) {
-        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "easy" && player2()[1].getbehavior() == "nice") {
+    public void hardNice(board b, deck d) {
+        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "hard" && player2()[1].getbehavior() == "nice") {
 //            b.movePeg(player2()[0], move);
 //            b.setBumpcheck(true);
 //            System.out.println(b.getBumpCheck());
 
             for (int i = 0; i < player2().length ; i++) {
             	if(b.getNiceMove() <= 0) {
-					b.movePeg(player2()[i], move, true);
+					b.movePeg(player2()[i], d.getDrawnCard().getVal(), true);
 					//b.setNiceMove(0);
 				}
 
@@ -381,26 +383,111 @@ public class Players {
 			b.setNiceMove(0);
             //if (b.getBumpCheck()==true)
         }
-        if (b.getTurn() == 3 && player3()[1].getdifficulty() == "easy" && player3()[1].getbehavior() == "dumb") {
-            for (int i = 0; i < player3().length; i++) {
-                System.out.println(b.getBumpCheck());
-                if (b.getBumpCheck() == true) {
-                    //System.out.println("Nothing happened");
-                    b.movePeg(player3()[i], move,true);
-                    break;
-                }
-                else{
-                    System.out.println("Nothing happened");
-                }
-            }
+        if (b.getTurn() == 3 && player3()[1].getdifficulty() == "hard" && player3()[1].getbehavior() == "nice") {
+			for (int i = 0; i < player3().length ; i++) {
+				if(b.getNiceMove() <= 0) {
+					b.movePeg(player3()[i], d.getDrawnCard().getVal(), true);
+					//b.setNiceMove(0);
+				}
+
+			}
+			b.setNiceMove(0);
         }
-        if (b.getTurn() == 4 && player4()[1].getdifficulty() == "easy" && player4()[1].getbehavior() == "dumb") {
-            for (int i = 0; i < player4().length; i++) {
-                if (b.getBumpCheck() == true) {
-                    b.movePeg(player4()[i], move,true);
-                    break;
+        if (b.getTurn() == 4 && player4()[1].getdifficulty() == "hard" && player4()[1].getbehavior() == "nice") {
+			for (int i = 0; i < player4().length ; i++) {
+				if(b.getNiceMove() <= 0) {
+					b.movePeg(player4()[i], d.getDrawnCard().getVal(), true);
+					//b.setNiceMove(0);
+				}
+
+			}
+			b.setNiceMove(0);
+        }
+        //moves each piece at random
+        //numbers generated randomly between the first peg and fourth peg
+        //if space = occupied don't make that peg go to it
+
+
+    }
+	public void easyNice(board b, deck d) {
+		if (b.getTurn() == 2 && player2()[1].getdifficulty() == "easy" && player2()[1].getbehavior() == "nice") {
+
+
+			for (int i = 0; i < player2().length ; i++) {
+                Random generator = new Random();
+                int randomIndex = generator.nextInt(player2().length);
+				if(b.getNiceMove() <= 0) {
+					b.movePeg(player2()[randomIndex], d.getDrawnCard().getVal(), true);
+					//b.setNiceMove(0);
+				}
+
+			}
+			b.setNiceMove(0);
+			//if (b.getBumpCheck()==true)
+		}
+		if (b.getTurn() == 3 && player3()[1].getdifficulty() == "easy" && player3()[1].getbehavior() == "nice") {
+			for (int i = 0; i < player3().length ; i++) {
+				if(b.getNiceMove() <= 0) {
+					b.movePeg(player3()[i], d.getDrawnCard().getVal(), true);
+					//b.setNiceMove(0);
+				}
+
+			}
+			b.setNiceMove(0);
+		}
+		if (b.getTurn() == 4 && player4()[1].getdifficulty() == "easy" && player4()[1].getbehavior() == "nice") {
+			for (int i = 0; i < player4().length ; i++) {
+				if(b.getNiceMove() <= 0) {
+					b.movePeg(player4()[i], d.getDrawnCard().getVal(), true);
+					//b.setNiceMove(0);
+				}
+
+			}
+			b.setNiceMove(0);
+		}
+		//moves each piece at random
+		//numbers generated randomly between the first peg and fourth peg
+		//if space = occupied don't make that peg go to it
+
+
+	}
+
+
+    public void hardMean(board b, deck d) {
+        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "hard" && player2()[1].getbehavior() == "mean") {
+//            b.movePeg(player2()[0], move);
+//            b.setBumpcheck(true);
+//            System.out.println(b.getBumpCheck());
+
+            for (int i = 0; i < player2().length ; i++) {
+                if(b.getMeanMove() <= 0) {
+                    b.movePeg(player2()[i], d.getDrawnCard().getVal(), false);
+                    //b.setNiceMove(0);
                 }
+
             }
+            b.setMeanMove(0);
+            //if (b.getBumpCheck()==true)
+        }
+        if (b.getTurn() == 3 && player3()[1].getdifficulty() == "hard" && player3()[1].getbehavior() == "mean") {
+            for (int i = 0; i < player3().length ; i++) {
+                if(b.getMeanMove() <= 0) {
+                    b.movePeg(player3()[i], d.getDrawnCard().getVal(), false);
+                    //b.setNiceMove(0);
+                }
+
+            }
+            b.setMeanMove(0);
+        }
+        if (b.getTurn() == 4 && player4()[1].getdifficulty() == "hard" && player4()[1].getbehavior() == "mean") {
+            for (int i = 0; i < player4().length ; i++) {
+                if(b.getMeanMove() <= 0) {
+                    b.movePeg(player4()[i], d.getDrawnCard().getVal(), false);
+                    //b.setNiceMove(0);
+                }
+
+            }
+            b.setMeanMove(0);
         }
         //moves each piece at random
         //numbers generated randomly between the first peg and fourth peg
