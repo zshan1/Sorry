@@ -341,7 +341,8 @@ public class board {
 				int temp2 = peg.getY()+a;
 				System.out.println("1:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -351,7 +352,8 @@ public class board {
 				int temp2 = 15;
 				System.out.println("2:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -361,7 +363,8 @@ public class board {
 				int temp2 = peg.getY()-a;
 				System.out.println("3:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -371,7 +374,8 @@ public class board {
 				int temp2 = 0;
 				System.out.println("4:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -381,7 +385,8 @@ public class board {
 				int temp2 = peg.getY();
 				System.out.println("5:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -391,7 +396,8 @@ public class board {
 				int temp2 = 30 - a - peg.getX();
 				System.out.println("6:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -401,7 +407,8 @@ public class board {
 				int temp2 = 0;
 				System.out.println("7:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -411,7 +418,8 @@ public class board {
 				int temp2 = a-peg.getX();
 				System.out.println("8:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -425,7 +433,8 @@ public class board {
 				int temp2 = peg.getY()+a;
 				System.out.println("8:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -435,7 +444,8 @@ public class board {
 				int temp2 = 0;
 				System.out.println("10:"+temp1+"+ "+temp2);
 				if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -445,7 +455,8 @@ public class board {
 				int temp2 = peg.getY()-a;
 				System.out.println("11:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -455,7 +466,8 @@ public class board {
 				int temp2 = 15;
 				System.out.println("12:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -465,7 +477,8 @@ public class board {
 				int temp2 = 15+a+peg.getX();
 				System.out.println("13:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -475,7 +488,8 @@ public class board {
 				int temp2 = peg.getY();
 				System.out.println("14:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -485,7 +499,8 @@ public class board {
 				int temp2 = 0;
 				System.out.println("15:"+temp1+"+ "+temp2);
 				if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -495,7 +510,8 @@ public class board {
 				int temp2 = -a-15 + peg.getX();
 				System.out.println("16:"+temp1+"+ "+temp2);
                 if(nice == false){
-                    check(peg, temp1,temp2);}
+                    check(peg, temp1,temp2);
+                    meanMove++;}
                 else{
                     checkNice(peg, temp1,temp2);
                 }
@@ -587,7 +603,7 @@ public class board {
 				slide(peg);
 			}
 		}
-	meanMove++;
+
 	}
     public void checkNice(pegs peg, int temp1, int temp2){
         int i =0;

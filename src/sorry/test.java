@@ -63,19 +63,30 @@ public class test {
 //		d.draw();
 //		board1.movePeg(plyrs1.getPeg12(),13);
 		game.play();
+
+        //yellow turn
 		d.draw();
 		board1.setTurn(2);
 		plyrs1.easyNice(board1,d);
+		plyrs1.hardNice(board1,d);
+		plyrs1.hardMean(board1,d);
 		game.play();
 
+		//green turn
 		d.draw();
 		board1.setTurn(board1.getTurn() + 1);
-		plyrs1.hardNice(board1, d);
+        plyrs1.easyNice(board1,d);
+        plyrs1.hardNice(board1,d);
+        plyrs1.hardMean(board1,d);
+
 		game.play();
 
-		//d.draw();
+		//red turn
+		d.draw();
 		board1.setTurn(board1.getTurn() + 1);
-		plyrs1.hardMean(board1, d);
+        plyrs1.easyNice(board1,d);
+        plyrs1.hardNice(board1,d);
+        plyrs1.hardMean(board1,d);
 		game.play();
 //		d.draw();
         //d.draw();

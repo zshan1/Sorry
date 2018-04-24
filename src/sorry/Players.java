@@ -427,8 +427,10 @@ public class Players {
 		}
 		if (b.getTurn() == 3 && player3()[1].getdifficulty() == "easy" && player3()[1].getbehavior() == "nice") {
 			for (int i = 0; i < player3().length ; i++) {
+                Random generator = new Random();
+                int randomIndex = generator.nextInt(player2().length);
 				if(b.getNiceMove() <= 0) {
-					b.movePeg(player3()[i], d.getDrawnCard().getVal(), true);
+					b.movePeg(player3()[randomIndex], d.getDrawnCard().getVal(), true);
 					//b.setNiceMove(0);
 				}
 
@@ -437,8 +439,10 @@ public class Players {
 		}
 		if (b.getTurn() == 4 && player4()[1].getdifficulty() == "easy" && player4()[1].getbehavior() == "nice") {
 			for (int i = 0; i < player4().length ; i++) {
+                Random generator = new Random();
+                int randomIndex = generator.nextInt(player2().length);
 				if(b.getNiceMove() <= 0) {
-					b.movePeg(player4()[i], d.getDrawnCard().getVal(), true);
+					b.movePeg(player4()[randomIndex], d.getDrawnCard().getVal(), true);
 					//b.setNiceMove(0);
 				}
 
@@ -482,7 +486,55 @@ public class Players {
         if (b.getTurn() == 4 && player4()[1].getdifficulty() == "hard" && player4()[1].getbehavior() == "mean") {
             for (int i = 0; i < player4().length ; i++) {
                 if(b.getMeanMove() <= 0) {
-                    b.movePeg(player4()[i], d.getDrawnCard().getVal(), false);
+                    b.movePeg(player4()[i], d.getDrawnCard().getVal(),false);
+                    //b.setNiceMove(0);
+                }
+
+            }
+            b.setMeanMove(0);
+        }
+        //moves each piece at random
+        //numbers generated randomly between the first peg and fourth peg
+        //if space = occupied don't make that peg go to it
+
+
+    }
+    public void easyMean(board b, deck d) {
+        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "easy" && player2()[1].getbehavior() == "mean") {
+//            b.movePeg(player2()[0], move);
+//            b.setBumpcheck(true);
+//            System.out.println(b.getBumpCheck());
+
+            for (int i = 0; i < player2().length ; i++) {
+                Random generator = new Random();
+                int randomIndex = generator.nextInt(player2().length);
+                if(b.getMeanMove() <= 0) {
+                    b.movePeg(player2()[randomIndex], d.getDrawnCard().getVal(), false);
+                    //b.setNiceMove(0);
+                }
+
+            }
+            b.setMeanMove(0);
+            //if (b.getBumpCheck()==true)
+        }
+        if (b.getTurn() == 3 && player3()[1].getdifficulty() == "easy" && player3()[1].getbehavior() == "mean") {
+            for (int i = 0; i < player3().length ; i++) {
+                Random generator = new Random();
+                int randomIndex = generator.nextInt(player2().length);
+                if(b.getMeanMove() <= 0) {
+                    b.movePeg(player3()[randomIndex], d.getDrawnCard().getVal(), false);
+                    //b.setNiceMove(0);
+                }
+
+            }
+            b.setMeanMove(0);
+        }
+        if (b.getTurn() == 4 && player4()[1].getdifficulty() == "easy" && player4()[1].getbehavior() == "mean") {
+            for (int i = 0; i < player4().length ; i++) {
+                Random generator = new Random();
+                int randomIndex = generator.nextInt(player2().length);
+                if(b.getMeanMove() <= 0) {
+                    b.movePeg(player4()[randomIndex], d.getDrawnCard().getVal(),false);
                     //b.setNiceMove(0);
                 }
 
