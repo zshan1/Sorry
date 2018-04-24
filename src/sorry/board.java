@@ -3,6 +3,7 @@ package sorry;
 import sorry.pegs.Color;
 
 public class board {
+	boolean bumpcheck;
 	public static final int X_SIZE = 16;
 	public static final int Y_SIZE = 16;
 	private pegs[][] board = new pegs[X_SIZE][Y_SIZE];
@@ -319,8 +320,12 @@ public class board {
 	}
 
 	public void check(pegs peg, int temp1, int temp2){
+		int i =0;
+//		setBumpcheck(true);
+		System.out.println("yyyyyy"+getBumpCheck());
 		if(isEmpty(temp1,temp2)){
-			if(!toPegSafeZone(peg,temp1,temp2)){			
+			if(!toPegSafeZone(peg,temp1,temp2)){
+
 				board[peg.getX()][peg.getY()] = null;
 				addPeg(peg,temp1,temp2);
 				if(isSlide(peg)){
@@ -331,7 +336,9 @@ public class board {
 				moveSafe(peg,temp1,temp2);
 			}
 		}
+		//else if(peg.getdifficulty()!="nice")
 		else{
+			setBumpcheck(false);
 			bump(peg,board[temp1][temp2]);
 			board[peg.getX()][peg.getY()] = null;
 			addPeg(peg,temp1,temp2);
@@ -367,31 +374,33 @@ public class board {
 			System.out.println("these pegs can not being swapped");
 		}
 	}
+//	public boolean bumpCheck(){
+//
+//	}
 	public void bump(pegs peg1, pegs peg2)
 	{
-		if(!isSafe(peg2)||!isHome(peg2)){
-			if (peg1.getColor() != peg2.getColor()){
-				if (peg2.getColor()== Color.RED){
-					board[peg2.getX()][peg2.getY()] = null;
-					addPeg(peg2,1,4);
+		if (peg1.getdifficulty()!="nice") {
+			if (!isSafe(peg2) || !isHome(peg2)) {
+				if (peg1.getColor() != peg2.getColor()) {
+					if (peg2.getColor() == Color.RED) {
+						board[peg2.getX()][peg2.getY()] = null;
+						addPeg(peg2, 1, 4);
+					} else if (peg2.getColor() == Color.GREEN) {
+						board[peg2.getX()][peg2.getY()] = null;
+						addPeg(peg2, 11, 1);
+					} else if (peg2.getColor() == Color.BLUE) {
+						board[peg2.getX()][peg2.getY()] = null;
+						addPeg(peg2, 4, 14);
+					} else if (peg2.getColor() == Color.YELLOW) {
+						board[peg2.getX()][peg2.getY()] = null;
+						addPeg(peg2, 14, 11);
+					}
+				} else {
+					System.out.println("error to bump");
 				}
-				else if (peg2.getColor()== Color.GREEN){
-					board[peg2.getX()][peg2.getY()] = null;
-					addPeg(peg2,11,1);
-				}
-				else if (peg2.getColor()== Color.BLUE){
-					board[peg2.getX()][peg2.getY()] = null;
-					addPeg(peg2,4,14);
-				}
-				else if (peg2.getColor()== Color.YELLOW){
-					board[peg2.getX()][peg2.getY()] = null;
-					addPeg(peg2,14,11);
-				}
-			}else{
-				System.out.println("error to bump");
+			} else {
+				System.out.println("this peg can not being bumped");
 			}
-		}else{
-			System.out.println("this peg can not being bumped");
 		}
 	}
 	public void start(pegs peg){
@@ -535,5 +544,11 @@ public class board {
 	}
 	public void setTurn(int t){
 		turn = t;
+	}
+	boolean getBumpCheck(){
+		return bumpcheck;
+	}
+	void setBumpcheck(boolean tf){
+		bumpcheck = tf;
 	}
 }

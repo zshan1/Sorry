@@ -11,8 +11,7 @@ package sorry;
 
 
 public class Players {
-<<<<<<< HEAD
-
+	//Players()
 	Players() {
 
 	}
@@ -286,119 +285,69 @@ public class Players {
 	pegs getPeg16() {
 		return peg16;
 	}
-=======
-    Players(){
 
-    }
+	public pegs[] player1(){
+		pegs p1Array[] = {getPeg1(), getPeg2(), getPeg3(),getPeg4()};
+		return p1Array;
+	}
+	public pegs[] player2(){
+		pegs p2Array[] = {getPeg5(), getPeg6(), getPeg7(),getPeg8()};
+		return p2Array;
+	}
+	public pegs[] player3(){
+		pegs p3Array[] = {getPeg9(), getPeg10(), getPeg11(),getPeg12()};
+		return p3Array;
+	}
+	public pegs[] player4(){
+		pegs p4Array[] = {getPeg13(), getPeg14(), getPeg15(),getPeg16()};
+		return p4Array;
+	}
+    public void niceEasy(board b, int move) {
+        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "easy" && player2()[1].getbehavior() == "nice") {
+//            b.movePeg(player2()[0], move);
+            b.setBumpcheck(true);
+            System.out.println(b.getBumpCheck());
 
+            for (int i = 0; i < player2().length; i++) {
+                if (b.getBumpCheck() == true) {
+                    System.out.println(i);
+                    b.movePeg(player2()[i], move);
+                  //  b.setBumpcheck(true);
+                    break;
+                }
+                else{
+                    System.out.println("ttt"+i);
+                    System.out.println("Nothing happened");
+                }
 
-    pegs currentPlayer;
-    //Blue pegs (P1)
-    pegs peg1 = new pegs(pegs.Color.BLUE);
-    pegs peg2 = new pegs(pegs.Color.BLUE);
-    pegs peg3 = new pegs(pegs.Color.BLUE);
-    pegs peg4 = new pegs(pegs.Color.BLUE);
-
-    //Yellow Pegs (P2)
-    pegs peg5 = new pegs(pegs.Color.YELLOW);
-    pegs peg6 = new pegs(pegs.Color.YELLOW);
-    pegs peg7 = new pegs(pegs.Color.YELLOW);
-    pegs peg8 = new pegs(pegs.Color.YELLOW);
-
-    //Green Pegs (P3)
-    pegs peg9 = new pegs(pegs.Color.GREEN);
-    pegs peg10 = new pegs(pegs.Color.GREEN);
-    pegs peg11= new pegs(pegs.Color.GREEN);
-    pegs peg12 = new pegs(pegs.Color.GREEN);
-
-    //Red Pegs (P4)
-    pegs peg13 = new pegs(pegs.Color.RED);
-    pegs peg14 = new pegs(pegs.Color.RED);
-    pegs peg15 = new pegs(pegs.Color.RED);
-    pegs peg16 = new pegs(pegs.Color.RED);
-
-    public void p1Init(board board1){
-
-        board1.addPeg(peg1, 1, 15);
-        board1.addPeg(peg2, 2, 15);
-        board1.addPeg(peg3, 3, 15);
-        board1.addPeg(peg4, 4, 15);
-    }
-    public void p2Init(board board1){
-
-        board1.addPeg(peg5, 15, 11);
-        board1.addPeg(peg6, 15, 12);
-        board1.addPeg(peg7, 15, 13);
-        board1.addPeg(peg8, 15, 14);
-    }
-
-    public void p3Init(board board1){
-
-        board1.addPeg(peg9, 14, 0);
-        board1.addPeg(peg10, 13, 0);
-        board1.addPeg(peg11, 12, 0);
-        board1.addPeg(peg12, 11, 0);
-    }
-    public void p4Init(board board1){
-
-        board1.addPeg(peg13, 0, 1);
-        board1.addPeg(peg14, 0, 2);
-        board1.addPeg(peg15, 0, 3);
-        board1.addPeg(peg16, 0, 4);
-    }
-    pegs getPeg1(){
-        return peg1;
-    }
-    pegs getPeg2(){
-        return peg2;
-    }
-    pegs getPeg3(){
-        return peg3;
-    }
-    pegs getPeg4(){
-        return peg4;
-    }
+            }
+            //if (b.getBumpCheck()==true)
+        }
+        if (b.getTurn() == 3 && player3()[1].getdifficulty() == "easy" && player3()[1].getbehavior() == "dumb") {
+            for (int i = 0; i < player3().length; i++) {
+                System.out.println(b.getBumpCheck());
+                if (b.getBumpCheck() == true) {
+                    //System.out.println("Nothing happened");
+                    b.movePeg(player3()[i], move);
+                    break;
+                }
+                else{
+                    System.out.println("Nothing happened");
+                }
+            }
+        }
+        if (b.getTurn() == 4 && player4()[1].getdifficulty() == "easy" && player4()[1].getbehavior() == "dumb") {
+            for (int i = 0; i < player4().length; i++) {
+                if (b.getBumpCheck() == true) {
+                    b.movePeg(player4()[i], move);
+                    break;
+                }
+            }
+        }
+        //moves each piece at random
+        //numbers generated randomly between the first peg and fourth peg
+        //if space = occupied don't make that peg go to it
 
 
-    pegs getPeg5(){
-        return peg5;
     }
-    pegs getPeg6(){
-        return peg6;
-    }
-    pegs getPeg7(){
-        return peg7;
-    }
-    pegs getPeg8(){
-        return peg8;
-    }
-
-
-    pegs getPeg9(){
-        return peg9;
-    }
-    pegs getPeg10(){
-        return peg10;
-    }
-    pegs getPeg11(){
-        return peg11;
-    }
-    pegs getPeg12(){
-        return peg12;
-    }
-
-
-    pegs getPeg13(){
-        return peg13;
-    }
-    pegs getPeg14(){
-        return peg14;
-    }
-    pegs getPeg15(){
-        return peg15;
-    }
-    pegs getPeg16(){
-        return peg16;
-    }
->>>>>>> 8ee5dcd6d9f50aee1bc8bba431e848c2251ee2df
 }

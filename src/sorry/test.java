@@ -21,13 +21,20 @@ public class test {
 	
 	public static void main(String[] args) {
 
+		computerplayer cp2 = new computerplayer();
+		computerplayer cp3 = new computerplayer();
+		computerplayer cp4 = new computerplayer();
+		String test = "dumb";
+		String smart = "smart";
+		String nice = "nice";
+		String easy = "easy";
 		test game = new test();
 		deck d = new deck();
 		Players plyrs1 = new Players();
         plyrs1.p1Init(board1);
-        plyrs1.p2Init(board1);
-        plyrs1.p3Init(board1);
-        plyrs1.p4Init(board1);
+        plyrs1.p2Init(board1,easy,nice);
+        plyrs1.p3Init(board1, easy, nice);
+        plyrs1.p4Init(board1, easy, nice);
 
 //		pegs peg1 = new pegs(Color.BLUE);
 //		pegs peg2 = new pegs(Color.YELLOW);
@@ -40,13 +47,25 @@ public class test {
 		game.play();
 		//board1.movePeg(peg1,1);
 		d.draw();
-        board1.movePeg(plyrs1.getPeg4(),d);
-        game.play();
-		d.draw();
-		board1.movePeg(plyrs1.getPeg4(),d);
-        game.play();
-		d.draw();
-		board1.movePeg(plyrs1.getPeg4(),d);
+//        board1.movePeg(plyrs1.getPeg4(),d);
+//        game.play();
+//		d.draw();
+//		board1.movePeg(plyrs1.getPeg4(),d);
+//        game.play();
+//		d.draw();
+//		board1.movePeg(plyrs1.getPeg4(),d);
+//
+//
+//		System.out.println(plyrs1.getPeg12().getdifficulty());
+//		game.play();
+//		d.draw();
+//		board1.movePeg(plyrs1.getPeg12(),13);
+//		game.play();
+//		d.draw();
+		board1.setTurn(2);
+		plyrs1.niceEasy(board1,14);
+		game.play();
+//		d.draw();
         //d.draw();
         //board1.movePeg(peg1,d);
 //		System.out.println(peg1.getColor());
@@ -65,7 +84,7 @@ public class test {
 //		System.out.println(peg1.getY());
 //		System.out.println(peg2.getX());
 //		System.out.println(peg2.getY());
-		game.play();
+		//game.play();
 		
 	}
 }
