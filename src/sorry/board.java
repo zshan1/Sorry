@@ -754,7 +754,80 @@ public class board {
 			return false;
 		} 
 	}
-
+	public boolean isStart(pegs peg){
+		if(peg.getColor()==Color.BLUE){
+			if (peg.getX()==13&&peg.getY()==3){
+				return true;
+			}
+			else if (peg.getX()==13&&peg.getY()==4){
+				return true;
+			}
+			else if (peg.getX()==12&&peg.getY()==3){
+				return true;
+			}
+			else if (peg.getX()==12&&peg.getY()==4){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else if(peg.getColor()==Color.YELLOW){
+			System.out.println("ss");
+			if (peg.getX()==11&&peg.getY()==13){
+				return true;
+			}
+			else if (peg.getX()==11&&peg.getY()==14){
+				return true;
+			}
+			else if (peg.getX()==10&&peg.getY()==13){
+				return true;
+			}
+			else if (peg.getX()==10&&peg.getY()==14){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else if(peg.getColor()==Color.GREEN){
+			if (peg.getX()==2&&peg.getY()==12){
+				return true;
+			}
+			else if (peg.getX()==2&&peg.getY()==11){
+				return true;
+			}
+			else if (peg.getX()==3&&peg.getY()==11){
+				return true;
+			}
+			else if (peg.getX()==3&&peg.getY()==12){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else if(peg.getColor()==Color.RED){
+			if (peg.getX()==4&&peg.getY()==2){
+				return true;
+			}
+			else if (peg.getX()==4&&peg.getY()==1){
+				return true;
+			}
+			else if (peg.getX()==5&&peg.getY()==2){
+				return true;
+			}
+			else if (peg.getX()==5&&peg.getY()==1){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	
 	public boolean isHome(pegs peg){
 		if(peg.getColor()==Color.RED && peg.getX()==6&&peg.getY()==2){
 			return true;

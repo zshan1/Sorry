@@ -313,7 +313,9 @@ public class Canvas extends Pane {
                             root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
 
                         }else{
-                            board1.movePeg(plyrs1.getPeg1(), 0);
+                        	root.getChildren().remove(pegb1);
+                            board1.movePeg(plyrs1.getPeg1(), d);
+                            root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
                         }
                     }
                     label1.setGraphic(new ImageView(image));
