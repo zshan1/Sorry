@@ -95,8 +95,8 @@ public class Canvas extends Pane {
 				// square.setPadding(new Insets(0, 20, 0, 20));
 				square.setPrefHeight(45);
 				square.setPrefWidth(45);
-//				square.setBorder(new Border(new BorderStroke(Color.BLACK,
-//						BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+				//				square.setBorder(new Border(new BorderStroke(Color.BLACK,
+				//						BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
 				root.add(square, col, row);
 			}
@@ -302,22 +302,64 @@ public class Canvas extends Pane {
 				Dialog<Pair<String, String>> dialog = new Dialog<>();
 				dialog.initModality(Modality.APPLICATION_MODAL);
 				dialog.setTitle("Sorry Game - Game Paused");
-				Image image;
-				String card = d.draw();
-				try {          
-					image = new Image(new FileInputStream("/Users/apple/Documents/Sorry/src/card" + card + ".png"));
-					System.out.println(card);
-					Label label1 = new Label();
-					label1.setAlignment(Pos.CENTER);
-					System.out.println( board1.isStart(plyrs1.getPeg1()));
-					System.out.println(plyrs1.getPeg1().getColor());
-					label1.setGraphic(new ImageView(image));
-					dialog.getDialogPane().setContent(label1);
-					dialog.getDialogPane().setStyle("-fx-background-color: #4472C4;");
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				
+				String card = d.draw();   
+				String c1 = "https://i.imgur.com/6gVHiZU.png";
+				String c2 = "https://i.imgur.com/r681E0F.png";
+				String c3 = "https://i.imgur.com/80Xd275.png";
+				String c4 = "https://i.imgur.com/ZG4XBkt.png";
+				String c5 = "https://i.imgur.com/W2zPspO.png";
+				String c7 = "https://i.imgur.com/gpsqsaZ.png";
+				String c8 = "https://i.imgur.com/RWkTvnb.png";
+				String c10 = "https://i.imgur.com/CXEzQvO.png";
+				String c11 = "https://i.imgur.com/yMh5NXL.png";
+				String c12 = "https://i.imgur.com/tRbNrC9.png";
+				String c13 = "https://i.imgur.com/XmVOZHZ.png";
+				
+				Image image = null;
+				if (card =="1"){
+					image = new Image(c1);
 				}
+				else if(card =="2"){
+					image = new Image(c2);
+				}
+				else if(card =="3"){
+					image = new Image(c3);
+				}
+				else if(card =="4"){
+					image = new Image(c4);
+				}
+				else if(card =="5"){
+					image = new Image(c5);
+				}
+				else if(card =="7"){
+					image = new Image(c7);
+				}
+				else if(card =="8"){
+					image = new Image(c8);
+				}
+				else if(card =="10"){
+					image = new Image(c10);
+				}
+				else if(card =="11"){
+					image = new Image(c11);
+				}
+				else if(card =="12"){
+					image = new Image(c12);
+				}
+				else if(card =="Sorry"){
+					image = new Image(c13);
+				}
+
+				//image = new Image(new FileInputStream("/Users/apple/Documents/Sorry/src/card" + card + ".png"));
+				System.out.println(card);
+				Label label1 = new Label();
+				label1.setAlignment(Pos.CENTER);
+				System.out.println( board1.isStart(plyrs1.getPeg1()));
+				System.out.println(plyrs1.getPeg1().getColor());
+				label1.setGraphic(new ImageView(image));
+				dialog.getDialogPane().setContent(label1);
+				dialog.getDialogPane().setStyle("-fx-background-color: #4472C4;");
 				if (sorry.deck.thedeck.length <= 0) {
 					d.reset();
 				}
@@ -340,13 +382,13 @@ public class Canvas extends Pane {
 							root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
 						}
 					}
-						else{
-							System.out.println("gfgfsgsdfdas");
-							root.getChildren().remove(pegb1);
-							board1.movePeg(plyrs1.getPeg1(), d);
-							root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
-							}
-					
+					else{
+						System.out.println("gfgfsgsdfdas");
+						root.getChildren().remove(pegb1);
+						board1.movePeg(plyrs1.getPeg1(), d);
+						root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
+					}
+
 				}
 				else if (result.get() == btnType2) {
 					if( board1.isStart(plyrs1.getPeg2())){
@@ -356,13 +398,13 @@ public class Canvas extends Pane {
 							root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
 						}
 					}
-						else{
-							System.out.println("gfgfsgsdfdas");
-							root.getChildren().remove(pegb2);
-							board1.movePeg(plyrs1.getPeg2(), d);
-							root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
-							}
-					
+					else{
+						System.out.println("gfgfsgsdfdas");
+						root.getChildren().remove(pegb2);
+						board1.movePeg(plyrs1.getPeg2(), d);
+						root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
+					}
+
 				}
 				else if (result.get() == btnType3) {
 					if( board1.isStart(plyrs1.getPeg3())){
@@ -372,13 +414,13 @@ public class Canvas extends Pane {
 							root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
 						}
 					}
-						else{
-							System.out.println("gfgfsgsdfdas");
-							root.getChildren().remove(pegb3);
-							board1.movePeg(plyrs1.getPeg3(), d);
-							root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
-							}
-	
+					else{
+						System.out.println("gfgfsgsdfdas");
+						root.getChildren().remove(pegb3);
+						board1.movePeg(plyrs1.getPeg3(), d);
+						root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
+					}
+
 				}else if (result.get() == btnType4) {
 					if( board1.isStart(plyrs1.getPeg4())){
 						if(card == "1" | card == "2"){                        
@@ -387,13 +429,13 @@ public class Canvas extends Pane {
 							root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
 						}
 					}
-						else{
-							System.out.println("gfgfsgsdfdas");
-							root.getChildren().remove(pegb4);
-							board1.movePeg(plyrs1.getPeg4(), d);
-							root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
-							}
-					
+					else{
+						System.out.println("gfgfsgsdfdas");
+						root.getChildren().remove(pegb4);
+						board1.movePeg(plyrs1.getPeg4(), d);
+						root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+					}
+
 				}else{
 					System.out.println("gfgfsgsdfdas");				
 				}
