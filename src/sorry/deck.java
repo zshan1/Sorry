@@ -145,7 +145,7 @@ public class deck {
         }
     }
 
-    void draw(){
+    String draw(){
 
         Random generator = new Random();
         int randomIndex = generator.nextInt(thedeck.length);
@@ -164,6 +164,7 @@ public class deck {
         System.out.println(" Card");
         printArray(result);
 
+        return drawnCard.getName();
     }
     public card getDrawnCard(){
         return drawnCard;

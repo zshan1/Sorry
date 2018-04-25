@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78fcefcb-d78b-411a-a9a0-0918542fc21e" name="Default" comment="" />
+    <list default="true" id="78fcefcb-d78b-411a-a9a0-0918542fc21e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/sorry/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sorry/Players.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sorry/deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sorry/deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sorry/pegs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sorry/pegs.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Players.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Players.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sorry/Players.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3890">
-              <caret line="444" column="51" selection-start-line="444" selection-start-column="51" selection-end-line="444" selection-end-column="51" />
+            <state relative-caret-position="-55">
+              <caret line="240" column="40" selection-start-line="240" selection-start-column="40" selection-end-line="240" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -110,8 +114,8 @@
       <file leaf-file-name="deck.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sorry/deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1118">
-              <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
+            <state relative-caret-position="73">
+              <caret line="166" column="35" selection-start-line="166" selection-start-column="35" selection-end-line="166" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pegs.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pegs.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sorry/pegs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+            <state relative-caret-position="60">
+              <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -158,10 +162,11 @@
         <option value="$PROJECT_DIR$/src/sorry/Canvas.java" />
         <option value="$PROJECT_DIR$/src/sorry/computerplayer.java" />
         <option value="$PROJECT_DIR$/src/sorry/board.java" />
-        <option value="$PROJECT_DIR$/src/sorry/Players.java" />
         <option value="$PROJECT_DIR$/src/sorry/test.java" />
         <option value="$PROJECT_DIR$/src/sorry/card.java" />
         <option value="$PROJECT_DIR$/src/sorry/deck.java" />
+        <option value="$PROJECT_DIR$/src/sorry/pegs.java" />
+        <option value="$PROJECT_DIR$/src/sorry/Players.java" />
       </list>
     </option>
   </component>
@@ -174,8 +179,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="14" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-16" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="809" />
@@ -299,15 +304,15 @@
       <workItem from="1524175319811" duration="5148000" />
       <workItem from="1524416168128" duration="6102000" />
       <workItem from="1524519430219" duration="12994000" />
-      <workItem from="1524601685016" duration="14791000" />
+      <workItem from="1524601685016" duration="15566000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47475000" />
+    <option name="totallyTimeSpent" value="48250000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1440" height="809" extended-state="6" />
+    <frame x="-365" y="23" width="1440" height="809" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -846,17 +851,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sorry/Players.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3890">
-          <caret line="444" column="51" selection-start-line="444" selection-start-column="51" selection-end-line="444" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sorry/deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1118">
-          <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
+        <state relative-caret-position="73">
+          <caret line="166" column="35" selection-start-line="166" selection-start-column="35" selection-end-line="166" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -865,8 +863,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sorry/pegs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+        <state relative-caret-position="60">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sorry/Players.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-55">
+          <caret line="240" column="40" selection-start-line="240" selection-start-column="40" selection-end-line="240" selection-end-column="40" />
         </state>
       </provider>
     </entry>

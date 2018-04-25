@@ -11,7 +11,7 @@ public class pegs {
 	public enum Color {
 		RED, GREEN, BLUE, YELLOW
 	}
-	
+	public pegs(){}
 	public pegs(Color pgolor)
 	{
 		color = pgolor;
