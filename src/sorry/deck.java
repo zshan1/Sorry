@@ -39,42 +39,49 @@ public class deck {
                 thedeck[r] = new card();
                 thedeck[r].setName("1");
                 thedeck[r].setVal(1);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(true);
                 thedeck[r].setSplitable(false);
             } else if (r >= 5 && r < 9) {
                 thedeck[r] = new card();
                 thedeck[r].setName("2");
                 thedeck[r].setVal(2);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(true);
                 thedeck[r].setSplitable(false);
             } else if (r >= 9 && r < 13) {
                 thedeck[r] = new card();
                 thedeck[r].setName("3");
                 thedeck[r].setVal(3);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             } else if (r >= 13 && r < 17) {
                 thedeck[r] = new card();
                 thedeck[r].setName("4");
                 thedeck[r].setVal(-4);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             } else if (r >= 17 && r < 21) {
                 thedeck[r] = new card();
                 thedeck[r].setName("5");
                 thedeck[r].setVal(5);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             } else if (r >= 21 && r < 25) {
                 thedeck[r] = new card();
                 thedeck[r].setName("7");
                 thedeck[r].setVal(7);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(true);
             } else if (r >= 25 && r < 29) {
                 thedeck[r] = new card();
                 thedeck[r].setName("8");
                 thedeck[r].setVal(8);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             } else if (r >= 29 && r < 33) {
@@ -87,12 +94,14 @@ public class deck {
                 thedeck[r] = new card();
                 thedeck[r].setName("11");
                 thedeck[r].setVal(11);
+                thedeck[r].setAlt(thedeck[r].getVal());
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             } else if (r >= 37 && r < 41) {
                 thedeck[r] = new card();
                 thedeck[r].setName("12");
                 thedeck[r].setVal(12);
+                thedeck[r].setAlt(-1);
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             } else if (r >= 41 ) {
