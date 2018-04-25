@@ -36,6 +36,7 @@ public class board {
 		}
 	}
     public void movePeg(pegs peg, deck d) {
+    	System.out.println(d.getDrawnCard().getVal());
         if(d.getDrawnCard().getVal() >= 0 && !isHome(peg)){
             if(peg.getY()+d.getDrawnCard().getVal() <= 15 && peg.getX()==0){
                 int temp1 = peg.getX();
