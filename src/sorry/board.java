@@ -756,24 +756,23 @@ public class board {
 	}
 	public boolean isStart(pegs peg){
 		if(peg.getColor()==Color.BLUE){
-			if (peg.getX()==13&&peg.getY()==3){
-				return true;
-			}
-			else if (peg.getX()==13&&peg.getY()==4){
-				return true;
-			}
-			else if (peg.getX()==12&&peg.getY()==3){
-				return true;
-			}
-			else if (peg.getX()==12&&peg.getY()==4){
-				return true;
-			}
-			else{
-				return false;
-			}
+				if (peg.getX()==3&&peg.getY()==13){
+					return true;
+				}
+				else if (peg.getX()==4&&peg.getY()==13){
+					return true;
+				}
+				else if (peg.getX()==3&&peg.getY()==12){
+					return true;
+				}
+				else if (peg.getX()==4&&peg.getY()==12){
+					return true;
+				}
+				else{
+					return false;
+				}
 		}
-		else if(peg.getColor()==Color.YELLOW){
-			System.out.println("ss");
+                else if(peg.getColor()==Color.YELLOW){
 			if (peg.getX()==11&&peg.getY()==13){
 				return true;
 			}
@@ -789,41 +788,41 @@ public class board {
 			else{
 				return false;
 			}
-		}
-		else if(peg.getColor()==Color.GREEN){
-			if (peg.getX()==2&&peg.getY()==12){
+	}
+                else if(peg.getColor()==Color.GREEN){
+			if (peg.getX()==12&&peg.getY()==2){
 				return true;
 			}
-			else if (peg.getX()==2&&peg.getY()==11){
+			else if (peg.getX()==11&&peg.getY()==2){
 				return true;
 			}
-			else if (peg.getX()==3&&peg.getY()==11){
+			else if (peg.getX()==11&&peg.getY()==3){
 				return true;
 			}
-			else if (peg.getX()==3&&peg.getY()==12){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		else if(peg.getColor()==Color.RED){
-			if (peg.getX()==4&&peg.getY()==2){
-				return true;
-			}
-			else if (peg.getX()==4&&peg.getY()==1){
-				return true;
-			}
-			else if (peg.getX()==5&&peg.getY()==2){
-				return true;
-			}
-			else if (peg.getX()==5&&peg.getY()==1){
+			else if (peg.getX()==12&&peg.getY()==3){
 				return true;
 			}
 			else{
 				return false;
 			}
-		}else{
+	}
+                else if(peg.getColor()==Color.RED){
+			if (peg.getX()==2&&peg.getY()==4){
+				return true;
+			}
+			else if (peg.getX()==1&&peg.getY()==4){
+				return true;
+			}
+			else if (peg.getX()==2&&peg.getY()==5){
+				return true;
+			}
+			else if (peg.getX()==1&&peg.getY()==5){
+				return true;
+			}
+			else{
+				return false;
+			}
+	}else{
 			return false;
 		}
 	}
