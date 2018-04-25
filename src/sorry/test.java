@@ -36,7 +36,7 @@ public class test {
         plyrs1.p1Init(board1,"blue");
         plyrs1.p2Init(board1,easy,nice,"yellow");
         plyrs1.p3Init(board1, hard, nice, "green");
-        plyrs1.p4Init(board1, hard, mean,"red");
+        plyrs1.p4Init(board1, easy, mean,"red");
 
 //		pegs peg1 = new pegs(Color.BLUE);
 //		pegs peg2 = new pegs(Color.YELLOW);
@@ -70,6 +70,7 @@ public class test {
 		plyrs1.easyNice(board1,d);
 		plyrs1.hardNice(board1,d);
 		plyrs1.hardMean(board1,d);
+        plyrs1.easyMean(board1,d);
 		game.play();
 
 		//green turn
@@ -78,6 +79,7 @@ public class test {
         plyrs1.easyNice(board1,d);
         plyrs1.hardNice(board1,d);
         plyrs1.hardMean(board1,d);
+        plyrs1.easyMean(board1,d);
 
 		game.play();
 
@@ -87,6 +89,7 @@ public class test {
         plyrs1.easyNice(board1,d);
         plyrs1.hardNice(board1,d);
         plyrs1.hardMean(board1,d);
+        plyrs1.easyMean(board1,d);
 		game.play();
 //		d.draw();
         //d.draw();
