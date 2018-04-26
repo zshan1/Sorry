@@ -582,18 +582,24 @@ public class Canvas extends Pane {
 				buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
 				alert.getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4);
 				Optional result = alert.showAndWait();
+				
+					 String playerName = "maddie";
+			    String dayTime = "4262018";
+			    String mode = "1v3";
+			    String resultnew = "win";
 				if (result.get() == btnType1) {
-					draw.setDisable(true);
-					new java.util.Timer().schedule( 
-							new java.util.TimerTask() {
-								@Override
-								public void run() {
-									System.out.println("Hello World!");
-									draw.setDisable(false);
-								}
-							}, 
-							5000
-							);
+						try {
+							Connection mysqlConn = MysqlConnect.myConnect();
+							Statement st;
+							st = mysqlConn.createStatement();
+							st.executeUpdate("INSERT INTO savedata (playerName,dayTime,mode,difficulty,behavior,color,result) VALUES ( '" + playerName + "', '" + dayTime + "', '" + mode + "', '"
+									+ difficulty + "','" + behavior + "','" + choice + "','" + resultnew + "');");
+
+						} catch (Exception e) {
+							System.err.println("Got an exception! ");
+							System.err.println(e.getMessage());
+						}
+					
 
 				} else if (result.get() == btnType2) {
 					System.out.println("Hello World!");
