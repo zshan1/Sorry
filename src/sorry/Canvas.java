@@ -1,120 +1,52 @@
 package sorry;
 
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Control;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.util.Duration;
-import javafx.util.Pair;
-import sorry.*;
-
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
-import javafx.animation.AnimationTimer;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.util.Duration;
 import javafx.util.Pair;
-import sorry.*;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
 
 /**
- * The canvas on which shapes will be drawn.
- *
- * @author
+ * @author Zixiao Shan
  *
  */
 public class Canvas extends Pane {
@@ -138,8 +70,9 @@ public class Canvas extends Pane {
 	private boolean isb;
 	private boolean isc;
 	private boolean isd;
+	String content;
 
-	
+	// set up the basic canvas
 	private void InitComponents() throws FileNotFoundException {
 		GridPane root = new GridPane();
 		root.setPrefWidth(720);
@@ -161,17 +94,10 @@ public class Canvas extends Pane {
 			root.getRowConstraints().add(new RowConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY,
 					Priority.ALWAYS, VPos.CENTER, true));
 		}
-
+		//create a new board 
 		board board1 = new board();
-		// sorry.pegs peg1 = new sorry.pegs();
-		// sorry.pegs peg2 = new sorry.pegs();
-		// sorry.pegs peg3 = new sorry.pegs();
-		// sorry.pegs peg4 = new sorry.pegs();
-		// board1.addPeg(peg1, 1, 15);
-		// board1.addPeg(peg2, 2, 15);
-		// board1.addPeg(peg3, 3, 15);
-		// board1.addPeg(peg4, 4, 15);
 
+		// add four players 
 		Players plyrs1 = new Players();
 		String choice = "blue";
 		plyrs1.colorChoice(choice);
@@ -180,6 +106,7 @@ public class Canvas extends Pane {
 		plyrs1.p3Init(board1, "hard", "mean", choice);
 		plyrs1.p4Init(board1, "hard", "mean", choice);
 
+		// create labels in canvas 
 		Image redpeg = new Image("https://i.imgur.com/Z63apU2.png");
 		Label pegr1 = new Label();
 		Label pegr2 = new Label();
@@ -198,6 +125,7 @@ public class Canvas extends Pane {
 		pegr3.setGraphic(new ImageView(redpeg));
 		pegr4.setGraphic(new ImageView(redpeg));
 
+		// create labels in canvas
 		Image greenpeg = new Image("https://i.imgur.com/5QSltjY.png");
 		Label pegg1 = new Label();
 		Label pegg2 = new Label();
@@ -216,6 +144,7 @@ public class Canvas extends Pane {
 		pegg4.setPrefHeight(20);
 		pegg4.setPrefWidth(20);
 
+		// create labels in canvas
 		Image bluepeg = new Image("https://i.imgur.com/OStJya1.png");
 		Label pegb1 = new Label();
 		Label pegb2 = new Label();
@@ -234,6 +163,7 @@ public class Canvas extends Pane {
 		pegb4.setPrefHeight(20);
 		pegb4.setPrefWidth(20);
 
+		// create labels in canvas
 		Image yellowpeg = new Image("https://i.imgur.com/KoRrrmk.png");
 		Label pegy1 = new Label();
 		Label pegy2 = new Label();
@@ -252,6 +182,7 @@ public class Canvas extends Pane {
 		pegy4.setPrefHeight(20);
 		pegy4.setPrefWidth(20);
 
+		// link GUI pegs with board pegs 
 		if (choice == "blue") {
 			root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
 			root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
@@ -347,11 +278,13 @@ public class Canvas extends Pane {
 			root.add(pegb4, plyrs1.peg16.getY(), plyrs1.peg16.getX());
 		}
 
+		//create a new deck to draw cards
 		deck d = new deck();
 		board1.setTurn(1);
 		Button draw = new Button("Draw a card");
 		draw.setStyle(
 				" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
+		//draw card button
 		draw.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -413,7 +346,7 @@ public class Canvas extends Pane {
 					ButtonType btnType2 = new ButtonType("Peg 2");
 					ButtonType btnType3 = new ButtonType("Peg 3");
 					ButtonType btnType4 = new ButtonType("Peg 4");
-					ButtonType btnType5 = new ButtonType("Cant Move");
+					ButtonType btnType5 = new ButtonType("Can't");
 					ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
 					buttonBar.setStyle("-fx-font-size: 15px;" + "-fx-background-color: #4472C4;");
 					buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
@@ -504,7 +437,7 @@ public class Canvas extends Pane {
 						board1.setTurn(board1.getTurn() + 1);
 					}
 				}
-
+				//confirm the computers' move 
 				else if (board1.getTurn() == 2) {
 
 					ButtonType btnType5 = new ButtonType("Confirm Computer Drawn Card");
@@ -594,17 +527,34 @@ public class Canvas extends Pane {
 
 		});
 
+		//menu for game 
 		Button menu = new Button("Menu");
 		menu.setStyle(
 				" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
 		menu.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
+			//the alert view 
 			public void handle(ActionEvent event) {
 				Alert alert = new Alert(Alert.AlertType.NONE);
 				alert.setTitle("Sorry Game - Game Paused");
 				Image image;
-
+				content =String.valueOf(plyrs1.getPeg1().getX())+","+String.valueOf(plyrs1.getPeg1().getY())+
+						","+String.valueOf(plyrs1.getPeg2().getX())+","+String.valueOf(plyrs1.getPeg2().getY())+
+						","+String.valueOf(plyrs1.getPeg3().getX())+","+String.valueOf(plyrs1.getPeg3().getY())+
+						","+String.valueOf(plyrs1.getPeg4().getX())+","+String.valueOf(plyrs1.getPeg4().getY())+
+						","+String.valueOf(plyrs1.getPeg5().getX())+","+String.valueOf(plyrs1.getPeg5().getY())+
+						","+String.valueOf(plyrs1.getPeg6().getX())+","+String.valueOf(plyrs1.getPeg6().getY())+
+						","+String.valueOf(plyrs1.getPeg7().getX())+","+String.valueOf(plyrs1.getPeg7().getY())+
+						","+String.valueOf(plyrs1.getPeg8().getX())+","+String.valueOf(plyrs1.getPeg8().getY())+
+						","+String.valueOf(plyrs1.getPeg9().getX())+","+String.valueOf(plyrs1.getPeg9().getY())+
+						","+String.valueOf(plyrs1.getPeg10().getX())+","+String.valueOf(plyrs1.getPeg10().getY())+
+						","+String.valueOf(plyrs1.getPeg11().getX())+","+String.valueOf(plyrs1.getPeg11().getY())+
+						","+String.valueOf(plyrs1.getPeg12().getX())+","+String.valueOf(plyrs1.getPeg12().getY())+
+						","+String.valueOf(plyrs1.getPeg13().getX())+","+String.valueOf(plyrs1.getPeg13().getY())+
+						","+String.valueOf(plyrs1.getPeg14().getX())+","+String.valueOf(plyrs1.getPeg14().getY())+
+						","+String.valueOf(plyrs1.getPeg15().getX())+","+String.valueOf(plyrs1.getPeg15().getY())+
+						","+String.valueOf(plyrs1.getPeg16().getX())+","+String.valueOf(plyrs1.getPeg16().getY());
 				image = new Image("https://i.imgur.com/zRnPAOA.png");
 				Label label1 = new Label();
 				label1.setAlignment(Pos.CENTER);
@@ -621,7 +571,7 @@ public class Canvas extends Pane {
 				buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
 				alert.getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4);
 				Optional result = alert.showAndWait();
-
+				//save to MySql
 				String playerName = "maddie";
 				String dayTime = "4262018";
 				String mode = "1v3";
@@ -630,9 +580,10 @@ public class Canvas extends Pane {
 				String behavior = "nice";
 				if (result.get() == btnType1) {
 					try {
-						BufferedWriter writer = new BufferedWriter( new FileWriter("savedata.txt"));
-					    writer.write("hello");
-					   
+						
+						String path = "/Users/apple/Desktop/saveposition.txt";
+						Files.write( Paths.get(path), content.getBytes(), StandardOpenOption.CREATE);
+
 						Connection mysqlConn = MysqlConnect.myConnect();
 						Statement st;
 						st = mysqlConn.createStatement();
@@ -645,8 +596,15 @@ public class Canvas extends Pane {
 						System.err.println("Got an exception! ");
 						System.err.println(e.getMessage());
 					}
-				} else if (result.get() == btnType2) {
-					System.out.println("Hello World!");
+				} else if (result.get() == btnType2) {					
+					try {
+						Runtime.getRuntime().exec("java -jar /Users/apple/Desktop/sorry.jar");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.exit(0);
+
 				} else if (result.get() == btnType3) {
 					System.out.println("Hello World!");
 				} else {
@@ -657,6 +615,7 @@ public class Canvas extends Pane {
 
 		});
 
+		//organize the button at bottom
 		HBox hbox1 = new HBox(draw);
 		hbox1.setAlignment(Pos.CENTER);
 		HBox hbox2 = new HBox(menu);
@@ -671,6 +630,7 @@ public class Canvas extends Pane {
 		draw.setMinHeight(hbox3.getPrefHeight() - 10);
 		menu.setMinHeight(hbox3.getPrefHeight() - 10);
 
+		//show the time right now 
 		Label timerLabel = new Label();
 		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
 			Calendar cal = Calendar.getInstance();
