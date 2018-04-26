@@ -23,6 +23,7 @@ public class board {
 		}
 		System.out.println("");
 	}
+//for test only, print out the board
 	public char charRepresentation(pegs peg) {
 		if(peg.getColor() == Color.RED){
 			return 'R';
@@ -35,6 +36,7 @@ public class board {
 			return 'Y';
 		}
 	}
+	//move peg function, use a lot of if-else statement to keep pegs in ranges 
     public void movePeg(pegs peg, deck d) {
     	System.out.println(d.getDrawnCard().getVal());
         if(d.getDrawnCard().getVal() >= 0 && !isHome(peg)){
@@ -148,7 +150,7 @@ public class board {
         }
     }
 
-
+//move method for computer player, with different difficulty and move manner
 	public void movePeg(pegs peg, deck d, boolean nice) {
 		if(d.getDrawnCard().getVal() >= 0 && !isHome(peg)){
 			if(peg.getY()+d.getDrawnCard().getVal() <= 15 && peg.getX()==0){
@@ -323,7 +325,7 @@ public class board {
 
 
 
-
+//move method for peg with card number directly
 	public void movePeg(pegs peg, int a, boolean nice) {
 		if(a >= 0 && !isHome(peg)){
 			if(peg.getY()+a <= 15 && peg.getX()==0){
@@ -514,6 +516,8 @@ public class board {
 			System.out.println("Peg cant move");
 		}
 	}
+	
+	//move to safe zone for different color in different places
 	public void moveSafe(pegs peg, int temp1, int temp2){
 		if(peg.getColor()==Color.RED){
 			int temp3 = temp1+temp2-2;
@@ -569,6 +573,7 @@ public class board {
 		}
 	}
 
+	//check if the peg fulfilled the requirement to move
 	public void check(pegs peg, int temp1, int temp2){
 
 		if(isEmpty(temp1,temp2)){
@@ -595,6 +600,8 @@ public class board {
 		}
 
 	}
+	
+	//check if the movement is nice or not, if it is not nice, it will slide, otherwise it won't 
     public void checkNice(pegs peg, int temp1, int temp2){
         int i =0;
 
@@ -623,12 +630,15 @@ public class board {
         }
     }
 
+    // add pegs on board
 	public void addPeg(pegs peg, int x, int y) {
 		peg.setX(x);
 		peg.setY(y);
 		board[peg.getX()][peg.getY()] = peg;
 	}
 
+	
+	//exchange positions for peg1 and peg2, they will not exchange if peg1/2 is at safezone or peg1/2 is at home
 	public void swap(pegs peg1, pegs peg2){
 		if(!isSafe(peg1)&&!isHome(peg1)&&!isSafe(peg2)&!isHome(peg2)){
 			if (peg1.getColor() != peg2.getColor()){
@@ -649,9 +659,9 @@ public class board {
 			System.out.println("these pegs can not being swapped");
 		}
 	}
-//	public boolean bumpCheck(){
-//
-//	}
+
+	//bump other player's peg with yours, and this method is only for mean players
+	
 	public void bump(pegs peg1, pegs peg2)
 	{
 		if (peg1.getdifficulty()!="nice") {
@@ -678,6 +688,8 @@ public class board {
 			}
 		}
 	}
+	
+	// to start a peg, add them to the start point 
 	public void start(pegs peg){
 		if (peg.getColor()== Color.RED){
 			board[peg.getX()][peg.getY()] = null;
@@ -697,6 +709,7 @@ public class board {
 		}
 	}
 
+	//set home for different pegs 
 	public void setHome(pegs peg){
 		if (peg.getColor()== Color.RED){
 			addPeg(peg,7,2);
@@ -711,12 +724,14 @@ public class board {
 			addPeg(peg,8,13);
 		}
 	}
+	//slide function to allow pegs slide when they hit the right position
 
 	public void slide(pegs peg){
 		for (int i = 1; i< 5; i++){
 			movePeg(peg,1,false);
 		}
 	}
+	//check if the space is empty or not 
 	public boolean isEmpty(int x, int y) {
 		if((board[x][y] != null))
 		{
@@ -727,6 +742,7 @@ public class board {
 		}
 	}
 
+	//check if the peg is going to safe zone 
 	public boolean toPegSafeZone(pegs peg, int x, int y){
 		if(peg.getColor()==Color.RED && x==0 && y==2){
 			return true;
@@ -744,6 +760,8 @@ public class board {
 			return false;
 		} 
 	}
+	
+	//check if the peg is start or not 
 	public boolean isStart(pegs peg){
 		if(peg.getColor()==Color.BLUE){
 				if (peg.getX()==3&&peg.getY()==13){
@@ -817,6 +835,7 @@ public class board {
 		}
 	}
 	
+	//check the peg if it is home or not 
 	public boolean isHome(pegs peg){
 		if(peg.getColor()==Color.RED && peg.getX()==7&&peg.getY()==2){
 			return true;
@@ -833,6 +852,8 @@ public class board {
 			return false;
 		}
 	}
+	
+	// check if the peg is in safe zone or not 
 	public boolean isSafe(pegs peg){
 		if (peg.getColor()==Color.RED && peg.getY()==2 && peg.getX()<=5 && peg.getX()>=1){
 			return true;
@@ -849,6 +870,8 @@ public class board {
 			return false;
 		}
 	}
+	
+	//check if the peg is at slide part or not 
 	public boolean isSlide(pegs peg){
 		if (peg.getColor() != Color.RED && peg.getX() == 0 && peg.getY() == 1){
 			return true;
@@ -886,31 +909,45 @@ public class board {
 		}
 
 	}
+	
+	// get turn for different players
 	public int getTurn(){
 		return turn;
 	}
+	
+	// set turn for different players
 	public void setTurn(int t){
 	   
             turn = t;
         
 	}
+	
+	// get the check for bump
 	boolean getBumpCheck(){
 		return bumpcheck;
 	}
+	
+	// set the check for bump
 	void setBumpcheck(boolean tf){
 		bumpcheck = tf;
 	}
+	
+	//get nice move 
 	int getNiceMove(){
 	    return niceMove;
     }
+	
+	//set nice move 
     void setNiceMove(int m){
 	    niceMove = m;
     }
 
+  //get mean move 
     public int getMeanMove() {
         return meanMove;
     }
 
+  //set mean move 
     public void setMeanMove(int m) {
         meanMove = m;
     }
