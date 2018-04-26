@@ -46,8 +46,13 @@ import javafx.util.Duration;
 import javafx.util.Pair;
 import sorry.*;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -122,7 +127,6 @@ public class Canvas extends Pane {
 			this.all_pegs = new ArrayList<>();
 			this.InitComponents();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -133,60 +137,40 @@ public class Canvas extends Pane {
 	private boolean isa;
 	private boolean isb;
 	private boolean isc;
-	private boolean isd; 
+	private boolean isd;
 
-	//	public void hardNice(board b, deck d) {
-	//        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "hard" && player2()[1].getbehavior() == "nice") {
-	////            b.movePeg(player2()[0], move);
-	////            b.setBumpcheck(true);
-	////            System.out.println(b.getBumpCheck());
-	//
-	//            for (int i = 0; i < player2().length; i++) {
-	//                if (b.getNiceMove() <= 0) {
-	//                    b.movePeg(player2()[i], d.getDrawnCard().getVal(), true);
-	//                    setComputerPeg(player2()[i]);
-	//                    //b.setNiceMove(0);
-	//                }
-	//
-	//            }
-	//            b.setNiceMove(0);
-	//            //if (b.getBumpCheck()==true)
-	//        }
-	//    }
-
+	
 	private void InitComponents() throws FileNotFoundException {
 		GridPane root = new GridPane();
 		root.setPrefWidth(720);
 		root.setPrefHeight(720);
-		root.setStyle("-fx-background-image: url('https://i.imgur.com/CSFYsaE.png');"
-				+ "-fx-background-size: 720 720;" + "fx-background-position: center;");
+		root.setStyle("-fx-background-image: url('https://i.imgur.com/CSFYsaE.png');" + "-fx-background-size: 720 720;"
+				+ "fx-background-position: center;");
 		final int size = 16;
 		for (int row = 0; row < size; row++) {
 			for (int col = 0; col < size; col++) {
 				StackPane square = new StackPane();
-				// square.setPadding(new Insets(0, 20, 0, 20));
 				square.setPrefHeight(45);
 				square.setPrefWidth(45);
-				//				square.setBorder(new Border(new BorderStroke(Color.BLACK,
-				//						BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-
 				root.add(square, col, row);
 			}
 		}
 		for (int i = 0; i < size; i++) {
-			root.getColumnConstraints().add(new ColumnConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, HPos.CENTER, true));
-			root.getRowConstraints().add(new RowConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY, Priority.ALWAYS, VPos.CENTER, true));
+			root.getColumnConstraints().add(new ColumnConstraints(5, Control.USE_COMPUTED_SIZE,
+					Double.POSITIVE_INFINITY, Priority.ALWAYS, HPos.CENTER, true));
+			root.getRowConstraints().add(new RowConstraints(5, Control.USE_COMPUTED_SIZE, Double.POSITIVE_INFINITY,
+					Priority.ALWAYS, VPos.CENTER, true));
 		}
 
 		board board1 = new board();
-		//     sorry.pegs peg1 = new sorry.pegs();
-		//     sorry.pegs peg2 = new sorry.pegs();
-		//     sorry.pegs peg3 = new sorry.pegs();
-		//     sorry.pegs peg4 = new sorry.pegs();
-		//     board1.addPeg(peg1, 1, 15);
-		//	 board1.addPeg(peg2, 2, 15);
-		//	 board1.addPeg(peg3, 3, 15);
-		//	 board1.addPeg(peg4, 4, 15);
+		// sorry.pegs peg1 = new sorry.pegs();
+		// sorry.pegs peg2 = new sorry.pegs();
+		// sorry.pegs peg3 = new sorry.pegs();
+		// sorry.pegs peg4 = new sorry.pegs();
+		// board1.addPeg(peg1, 1, 15);
+		// board1.addPeg(peg2, 2, 15);
+		// board1.addPeg(peg3, 3, 15);
+		// board1.addPeg(peg4, 4, 15);
 
 		Players plyrs1 = new Players();
 		String choice = "blue";
@@ -250,7 +234,6 @@ public class Canvas extends Pane {
 		pegb4.setPrefHeight(20);
 		pegb4.setPrefWidth(20);
 
-
 		Image yellowpeg = new Image("https://i.imgur.com/KoRrrmk.png");
 		Label pegy1 = new Label();
 		Label pegy2 = new Label();
@@ -275,10 +258,10 @@ public class Canvas extends Pane {
 			root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
 			root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
 
-			root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());			
-			root.add(pegy2, plyrs1.peg6.getY(), plyrs1.peg6.getX());			
-			root.add(pegy3, plyrs1.peg7.getY(), plyrs1.peg7.getX());			
-			root.add(pegy4, plyrs1.peg8.getY(), plyrs1.peg8.getX());			
+			root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());
+			root.add(pegy2, plyrs1.peg6.getY(), plyrs1.peg6.getX());
+			root.add(pegy3, plyrs1.peg7.getY(), plyrs1.peg7.getX());
+			root.add(pegy4, plyrs1.peg8.getY(), plyrs1.peg8.getX());
 			plyrs1.peg5.setGpeg(pegy1);
 			plyrs1.peg6.setGpeg(pegy2);
 			plyrs1.peg7.setGpeg(pegy3);
@@ -301,7 +284,6 @@ public class Canvas extends Pane {
 			plyrs1.peg14.setGpeg(pegr2);
 			plyrs1.peg15.setGpeg(pegr3);
 			plyrs1.peg16.setGpeg(pegr4);
-
 
 		} else if (choice == "red") {
 			root.add(pegr1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
@@ -364,22 +346,12 @@ public class Canvas extends Pane {
 			root.add(pegb3, plyrs1.peg15.getY(), plyrs1.peg15.getX());
 			root.add(pegb4, plyrs1.peg16.getY(), plyrs1.peg16.getX());
 		}
-		//        root.setOnMouseClicked(evt -> {
-		//            Node target = evt.getPickResult().getIntersectedNode();
-		//
-		//            if (target != root) {
-		//                // in your case you'd need to make sure this is not the Label
-		//                Bounds bounds = target.getBoundsInParent();
-		//                System.out.println("bounds = " + bounds);
-		//                System.out.println("centerX = " + GridPane.getColumnIndex(target));
-		//                System.out.println("centerY = " + GridPane.getRowIndex(target));
-		//                //System.out.println(sorry.board.isEmpty(GridPane.getColumnIndex(target),GridPane.getRowIndex(target)));
-		//            }
-		//        });
+
 		deck d = new deck();
 		board1.setTurn(1);
 		Button draw = new Button("Draw a card");
-		draw.setStyle(" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
+		draw.setStyle(
+				" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
 		draw.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -389,7 +361,7 @@ public class Canvas extends Pane {
 				dialog.initModality(Modality.APPLICATION_MODAL);
 				dialog.setTitle("Sorry Game - Game Paused");
 
-				String card = d.draw();   
+				String card = d.draw();
 				String c1 = "https://i.imgur.com/6gVHiZU.png";
 				String c2 = "https://i.imgur.com/r681E0F.png";
 				String c3 = "https://i.imgur.com/80Xd275.png";
@@ -403,46 +375,33 @@ public class Canvas extends Pane {
 				String c13 = "https://i.imgur.com/XmVOZHZ.png";
 
 				Image image = null;
-				if (card =="1"){
+				if (card == "1") {
 					image = new Image(c1);
-				}
-				else if(card =="2"){
+				} else if (card == "2") {
 					image = new Image(c2);
-				}
-				else if(card =="3"){
+				} else if (card == "3") {
 					image = new Image(c3);
-				}
-				else if(card =="4"){
+				} else if (card == "4") {
 					image = new Image(c4);
-				}
-				else if(card =="5"){
+				} else if (card == "5") {
 					image = new Image(c5);
-				}
-				else if(card =="7"){
+				} else if (card == "7") {
 					image = new Image(c7);
-				}
-				else if(card =="8"){
+				} else if (card == "8") {
 					image = new Image(c8);
-				}
-				else if(card =="10"){
+				} else if (card == "10") {
 					image = new Image(c10);
-				}
-				else if(card =="11"){
+				} else if (card == "11") {
 					image = new Image(c11);
-				}
-				else if(card =="12"){
+				} else if (card == "12") {
 					image = new Image(c12);
-				}
-				else if(card =="Sorry"){
+				} else if (card == "Sorry") {
 					image = new Image(c13);
 				}
 
-				//image = new Image(new FileInputStream("/Users/apple/Documents/Sorry/src/card" + card + ".png"));
 				System.out.println(card);
 				Label label1 = new Label();
 				label1.setAlignment(Pos.CENTER);
-				//				System.out.println( board1.isStart(plyrs1.getPeg1()));
-				//				System.out.println(plyrs1.getPeg1().getColor());
 				label1.setGraphic(new ImageView(image));
 				dialog.getDialogPane().setContent(label1);
 				dialog.getDialogPane().setStyle("-fx-background-color: #4472C4;");
@@ -454,108 +413,190 @@ public class Canvas extends Pane {
 					ButtonType btnType2 = new ButtonType("Peg 2");
 					ButtonType btnType3 = new ButtonType("Peg 3");
 					ButtonType btnType4 = new ButtonType("Peg 4");
-					ButtonType btnType5 = new ButtonType("Confirm Move");
+					ButtonType btnType5 = new ButtonType("Cant Move");
 					ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
-					buttonBar.setStyle("-fx-font-size: 15px;"
-							+ "-fx-background-color: #4472C4;");
+					buttonBar.setStyle("-fx-font-size: 15px;" + "-fx-background-color: #4472C4;");
 					buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
 					dialog.getDialogPane().getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4, btnType5);
 					Optional result = dialog.showAndWait();
 					if (result.get() == btnType1) {
-						if(card == "1" | card == "2"){                        
-							if(board1.isStart(plyrs1.getPeg1())){
+						if (card == "1" | card == "2") {
+							if (board1.isStart(plyrs1.getPeg1())) {
 								root.getChildren().remove(pegb1);
 								board1.start(plyrs1.getPeg1());
 								root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
-								System.out.println("1 & move");
-								plyrs1.easyNice(board1,d);
-								plyrs1.hardNice(board1,d);
-								plyrs1.hardMean(board1,d);
-								plyrs1.easyMean(board1,d);
-								System.out.println("array length:"+plyrs1.getPeg5());
-								if(plyrs1.getPeg5()!=null){
-									root.getChildren().remove(plyrs1.getComputerPeg().getGpeg());
-									root.add(plyrs1.getComputerPeg().getGpeg(), plyrs1.getComputerPeg().getY(), plyrs1.getComputerPeg().getX());
-								}
-							}else{
+								board1.setTurn(board1.getTurn() + 1);
+
+							} else {
 								root.getChildren().remove(pegb1);
 								board1.movePeg(plyrs1.getPeg1(), d);
 								root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
-								System.out.println("other & move");
+								board1.setTurn(board1.getTurn() + 1);
 							}
-						}else{
+
+						} else {
 							root.getChildren().remove(pegb1);
 							board1.movePeg(plyrs1.getPeg1(), d);
 							root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
-							System.out.println("other & move");
+							board1.setTurn(board1.getTurn() + 1);
 						}
 					}
+
 					else if (result.get() == btnType2) {
-						if(card == "1" | card == "2"){
-							if(board1.isStart(plyrs1.getPeg2())){
+						if (card == "1" | card == "2") {
+							if (board1.isStart(plyrs1.getPeg2())) {
 								root.getChildren().remove(pegb2);
 								board1.start(plyrs1.getPeg2());
-								root.add(pegb1, plyrs1.peg2.getY(), plyrs1.peg2.getX());
-								System.out.println("1 & move");
-							}else{
+								root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
+								board1.setTurn(board1.getTurn() + 1);
+							} else {
 								root.getChildren().remove(pegb2);
-								board1.movePeg(plyrs1.getPeg1(), d);
-								root.add(pegb1, plyrs1.peg2.getY(), plyrs1.peg2.getX());
-								System.out.println("other & move");
+								board1.movePeg(plyrs1.getPeg2(), d);
+								root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
+								board1.setTurn(board1.getTurn() + 1);
 							}
-						}else{
+						} else {
 							root.getChildren().remove(pegb2);
 							board1.movePeg(plyrs1.getPeg2(), d);
 							root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
-							System.out.println("other & move");
+							board1.setTurn(board1.getTurn() + 1);
 						}
-					}else if (result.get() == btnType3) {
-						if(card == "1" | card == "2"){                        
-							if(board1.isStart(plyrs1.getPeg3())){
+					} else if (result.get() == btnType3) {
+						if (card == "1" | card == "2") {
+							if (board1.isStart(plyrs1.getPeg3())) {
 								root.getChildren().remove(pegb3);
 								board1.start(plyrs1.getPeg3());
 								root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
-								System.out.println("1 & move");
-							}else{
+								board1.setTurn(board1.getTurn() + 1);
+							} else {
 								root.getChildren().remove(pegb3);
 								board1.movePeg(plyrs1.getPeg3(), d);
 								root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
-								System.out.println("other & move");
+								board1.setTurn(board1.getTurn() + 1);
 							}
-						}else{
+						} else {
 							root.getChildren().remove(pegb3);
 							board1.movePeg(plyrs1.getPeg3(), d);
 							root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
-							System.out.println("other & move");
+							board1.setTurn(board1.getTurn() + 1);
 						}
-					}else if (result.get() == btnType4) {
-						if(card == "1" | card == "2"){                        
-							if(board1.isStart(plyrs1.getPeg4())){
+					} else if (result.get() == btnType4) {
+						if (card == "1" | card == "2") {
+							if (board1.isStart(plyrs1.getPeg4())) {
 								root.getChildren().remove(pegb4);
 								board1.start(plyrs1.getPeg4());
-								root.add(pegb1, plyrs1.peg4.getY(), plyrs1.peg4.getX());
-								System.out.println("1 & move");
-							}else{
+								root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+								board1.setTurn(board1.getTurn() + 1);
+							} else {
 								root.getChildren().remove(pegb4);
 								board1.movePeg(plyrs1.getPeg4(), d);
 								root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
-								System.out.println("other & move");
+								board1.setTurn(board1.getTurn() + 1);
 							}
-						}else{
-							root.getChildren().remove(pegb1);
+						} else {
+							root.getChildren().remove(pegb4);
 							board1.movePeg(plyrs1.getPeg4(), d);
-							root.add(pegb1, plyrs1.peg4.getY(), plyrs1.peg4.getX());
-							System.out.println("other & move");
+							root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+							board1.setTurn(board1.getTurn() + 1);
 						}
 					}
+					else if (result.get() == btnType5) {
+						board1.setTurn(board1.getTurn() + 1);
+					}
+				}
+
+				else if (board1.getTurn() == 2) {
+
+					ButtonType btnType5 = new ButtonType("Confirm Computer Drawn Card");
+					ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
+					buttonBar.setStyle("-fx-font-size: 15px;" + "-fx-background-color: #4472C4;");
+					buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
+					dialog.getDialogPane().getButtonTypes().setAll(btnType5);
+					Optional result = dialog.showAndWait();
+
+					if (card == "1" | card == "2") {
+						if (board1.isStart(plyrs1.getPeg5())) {
+							root.getChildren().remove(pegy1);
+							board1.start(plyrs1.getPeg5());
+							root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());
+							board1.setTurn(board1.getTurn() + 1);
+						} else {
+							root.getChildren().remove(pegy1);
+							board1.movePeg(plyrs1.getPeg4(), d);
+							root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());
+							board1.setTurn(board1.getTurn() + 1);
+						}
+					} else {
+						root.getChildren().remove(pegy1);
+						board1.movePeg(plyrs1.getPeg4(), d);
+						root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());
+						board1.setTurn(board1.getTurn() + 1);
+					}
+
+				} else if (board1.getTurn() == 3) {
+
+					ButtonType btnType5 = new ButtonType("Confirm Computer Drawn Card");
+					ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
+					buttonBar.setStyle("-fx-font-size: 15px;" + "-fx-background-color: #4472C4;");
+					buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
+					dialog.getDialogPane().getButtonTypes().setAll(btnType5);
+					Optional result = dialog.showAndWait();
+
+					if (card == "1" | card == "2") {
+						if (board1.isStart(plyrs1.getPeg9())) {
+							root.getChildren().remove(pegg1);
+							board1.start(plyrs1.getPeg9());
+							root.add(pegg1, plyrs1.peg9.getY(), plyrs1.peg9.getX());
+							board1.setTurn(board1.getTurn() + 1);
+						} else {
+							root.getChildren().remove(pegg1);
+							board1.movePeg(plyrs1.getPeg9(), d);
+							root.add(pegg1, plyrs1.peg9.getY(), plyrs1.peg9.getX());
+							board1.setTurn(board1.getTurn() + 1);
+						}
+					} else {
+						root.getChildren().remove(pegg1);
+						board1.movePeg(plyrs1.getPeg9(), d);
+						root.add(pegg1, plyrs1.peg9.getY(), plyrs1.peg9.getX());
+						board1.setTurn(board1.getTurn() + 1);
+					}
+
+				} else {
+
+					ButtonType btnType5 = new ButtonType("Confirm Computer Drawn Card");
+					ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
+					buttonBar.setStyle("-fx-font-size: 15px;" + "-fx-background-color: #4472C4;");
+					buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
+					dialog.getDialogPane().getButtonTypes().setAll(btnType5);
+					Optional result = dialog.showAndWait();
+
+					if (card == "1" | card == "2") {
+						if (board1.isStart(plyrs1.getPeg13())) {
+							root.getChildren().remove(pegr1);
+							board1.start(plyrs1.getPeg13());
+							root.add(pegr1, plyrs1.peg13.getY(), plyrs1.peg13.getX());
+							board1.setTurn(1);
+						} else {
+							root.getChildren().remove(pegr1);
+							board1.movePeg(plyrs1.getPeg13(), d);
+							root.add(pegr1, plyrs1.peg13.getY(), plyrs1.peg13.getX());
+							board1.setTurn(1);
+						}
+					} else {
+						root.getChildren().remove(pegr1);
+						board1.movePeg(plyrs1.getPeg13(), d);
+						root.add(pegr1, plyrs1.peg13.getY(), plyrs1.peg13.getX());
+						board1.setTurn(1);
+					}
+
 				}
 			}
-			// board1.movePeg(peg1,d);
 
 		});
 
 		Button menu = new Button("Menu");
-		menu.setStyle(" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
+		menu.setStyle(
+				" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
 		menu.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -571,36 +612,39 @@ public class Canvas extends Pane {
 				alert.getDialogPane().setContent(label1);
 				alert.getDialogPane().setStyle("-fx-background-color: #4472C4;");
 
-
 				ButtonType btnType1 = new ButtonType("Save");
 				ButtonType btnType2 = new ButtonType("Restart");
 				ButtonType btnType3 = new ButtonType("Score");
 				ButtonType btnType4 = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 				ButtonBar buttonBar = (ButtonBar) alert.getDialogPane().lookup(".button-bar");
-				buttonBar.setStyle("-fx-font-size: 15px;"
-						+ "-fx-background-color: #4472C4;");
+				buttonBar.setStyle("-fx-font-size: 15px;" + "-fx-background-color: #4472C4;");
 				buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
 				alert.getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4);
 				Optional result = alert.showAndWait();
-				
-					 String playerName = "maddie";
-			    String dayTime = "4262018";
-			    String mode = "1v3";
-			    String resultnew = "win";
+
+				String playerName = "maddie";
+				String dayTime = "4262018";
+				String mode = "1v3";
+				String resultnew = "win";
+				String difficulty = "hard";
+				String behavior = "nice";
 				if (result.get() == btnType1) {
-						try {
-							Connection mysqlConn = MysqlConnect.myConnect();
-							Statement st;
-							st = mysqlConn.createStatement();
-							st.executeUpdate("INSERT INTO savedata (playerName,dayTime,mode,difficulty,behavior,color,result) VALUES ( '" + playerName + "', '" + dayTime + "', '" + mode + "', '"
-									+ difficulty + "','" + behavior + "','" + choice + "','" + resultnew + "');");
+					try {
+						BufferedWriter writer = new BufferedWriter( new FileWriter("savedata.txt"));
+					    writer.write("hello");
+					   
+						Connection mysqlConn = MysqlConnect.myConnect();
+						Statement st;
+						st = mysqlConn.createStatement();
+						st.executeUpdate(
+								"INSERT INTO savedata (playerName,dayTime,mode,difficulty,behavior,color,result) VALUES ( '"
+										+ playerName + "', '" + dayTime + "', '" + mode + "', '" + difficulty + "','"
+										+ behavior + "','" + choice + "','" + resultnew + "');");
 
-						} catch (Exception e) {
-							System.err.println("Got an exception! ");
-							System.err.println(e.getMessage());
-						}
-					
-
+					} catch (Exception e) {
+						System.err.println("Got an exception! ");
+						System.err.println(e.getMessage());
+					}
 				} else if (result.get() == btnType2) {
 					System.out.println("Hello World!");
 				} else if (result.get() == btnType3) {
@@ -633,11 +677,9 @@ public class Canvas extends Pane {
 			second = cal.get(Calendar.SECOND);
 			minute = cal.get(Calendar.MINUTE);
 			hour = cal.get(Calendar.HOUR);
-			//System.out.println(hour + ":" + (minute) + ":" + second);
+			// System.out.println(hour + ":" + (minute) + ":" + second);
 			timerLabel.setText("Current time: " + hour + ":" + (minute) + ":" + second);
-		}),
-				new KeyFrame(Duration.seconds(1))
-				);
+		}), new KeyFrame(Duration.seconds(1)));
 		clock.setCycleCount(Animation.INDEFINITE);
 		clock.play();
 		timerLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
