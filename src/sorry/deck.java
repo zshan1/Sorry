@@ -107,7 +107,7 @@ public class deck {
             } else if (r >= 41 ) {
                 thedeck[r] = new card();
                 thedeck[r].setName("Sorry");
-                thedeck[r].setVal(100);
+                thedeck[r].setVal(0);
                 thedeck[r].setStartable(false);
                 thedeck[r].setSplitable(false);
             }

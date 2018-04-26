@@ -52,6 +52,59 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Control;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.util.Duration;
+import javafx.util.Pair;
+import sorry.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * The canvas on which shapes will be drawn.
@@ -81,6 +134,25 @@ public class Canvas extends Pane {
 	private boolean isb;
 	private boolean isc;
 	private boolean isd; 
+
+	//	public void hardNice(board b, deck d) {
+	//        if (b.getTurn() == 2 && player2()[1].getdifficulty() == "hard" && player2()[1].getbehavior() == "nice") {
+	////            b.movePeg(player2()[0], move);
+	////            b.setBumpcheck(true);
+	////            System.out.println(b.getBumpCheck());
+	//
+	//            for (int i = 0; i < player2().length; i++) {
+	//                if (b.getNiceMove() <= 0) {
+	//                    b.movePeg(player2()[i], d.getDrawnCard().getVal(), true);
+	//                    setComputerPeg(player2()[i]);
+	//                    //b.setNiceMove(0);
+	//                }
+	//
+	//            }
+	//            b.setNiceMove(0);
+	//            //if (b.getBumpCheck()==true)
+	//        }
+	//    }
 
 	private void InitComponents() throws FileNotFoundException {
 		GridPane root = new GridPane();
@@ -203,20 +275,33 @@ public class Canvas extends Pane {
 			root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
 			root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
 
-			root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());
-			root.add(pegy2, plyrs1.peg6.getY(), plyrs1.peg6.getX());
-			root.add(pegy3, plyrs1.peg7.getY(), plyrs1.peg7.getX());
-			root.add(pegy4, plyrs1.peg8.getY(), plyrs1.peg8.getX());
+			root.add(pegy1, plyrs1.peg5.getY(), plyrs1.peg5.getX());			
+			root.add(pegy2, plyrs1.peg6.getY(), plyrs1.peg6.getX());			
+			root.add(pegy3, plyrs1.peg7.getY(), plyrs1.peg7.getX());			
+			root.add(pegy4, plyrs1.peg8.getY(), plyrs1.peg8.getX());			
+			plyrs1.peg5.setGpeg(pegy1);
+			plyrs1.peg6.setGpeg(pegy2);
+			plyrs1.peg7.setGpeg(pegy3);
+			plyrs1.peg8.setGpeg(pegy4);
 
 			root.add(pegg1, plyrs1.peg9.getY(), plyrs1.peg9.getX());
 			root.add(pegg2, plyrs1.peg10.getY(), plyrs1.peg10.getX());
 			root.add(pegg3, plyrs1.peg11.getY(), plyrs1.peg11.getX());
 			root.add(pegg4, plyrs1.peg12.getY(), plyrs1.peg12.getX());
+			plyrs1.peg9.setGpeg(pegg1);
+			plyrs1.peg10.setGpeg(pegg2);
+			plyrs1.peg11.setGpeg(pegg3);
+			plyrs1.peg12.setGpeg(pegg4);
 
 			root.add(pegr1, plyrs1.peg13.getY(), plyrs1.peg13.getX());
 			root.add(pegr2, plyrs1.peg14.getY(), plyrs1.peg14.getX());
 			root.add(pegr3, plyrs1.peg15.getY(), plyrs1.peg15.getX());
 			root.add(pegr4, plyrs1.peg16.getY(), plyrs1.peg16.getX());
+			plyrs1.peg13.setGpeg(pegr1);
+			plyrs1.peg14.setGpeg(pegr2);
+			plyrs1.peg15.setGpeg(pegr3);
+			plyrs1.peg16.setGpeg(pegr4);
+
 
 		} else if (choice == "red") {
 			root.add(pegr1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
@@ -292,6 +377,7 @@ public class Canvas extends Pane {
 		//            }
 		//        });
 		deck d = new deck();
+		board1.setTurn(1);
 		Button draw = new Button("Draw a card");
 		draw.setStyle(" -fx-text-fill: white;-fx-font: 20 arial;-fx-font-weight: bold;-fx-background-color: linear-gradient(#61a2b1, #2A5058);-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
 		draw.setOnAction(new EventHandler<ActionEvent>() {
@@ -302,7 +388,7 @@ public class Canvas extends Pane {
 				Dialog<Pair<String, String>> dialog = new Dialog<>();
 				dialog.initModality(Modality.APPLICATION_MODAL);
 				dialog.setTitle("Sorry Game - Game Paused");
-				
+
 				String card = d.draw();   
 				String c1 = "https://i.imgur.com/6gVHiZU.png";
 				String c2 = "https://i.imgur.com/r681E0F.png";
@@ -315,7 +401,7 @@ public class Canvas extends Pane {
 				String c11 = "https://i.imgur.com/yMh5NXL.png";
 				String c12 = "https://i.imgur.com/tRbNrC9.png";
 				String c13 = "https://i.imgur.com/XmVOZHZ.png";
-				
+
 				Image image = null;
 				if (card =="1"){
 					image = new Image(c1);
@@ -355,104 +441,114 @@ public class Canvas extends Pane {
 				System.out.println(card);
 				Label label1 = new Label();
 				label1.setAlignment(Pos.CENTER);
-				System.out.println( board1.isStart(plyrs1.getPeg1()));
-				System.out.println(plyrs1.getPeg1().getColor());
+				//				System.out.println( board1.isStart(plyrs1.getPeg1()));
+				//				System.out.println(plyrs1.getPeg1().getColor());
 				label1.setGraphic(new ImageView(image));
 				dialog.getDialogPane().setContent(label1);
 				dialog.getDialogPane().setStyle("-fx-background-color: #4472C4;");
 				if (sorry.deck.thedeck.length <= 0) {
 					d.reset();
 				}
-				ButtonType btnType1 = new ButtonType("Peg 1");
-				ButtonType btnType2 = new ButtonType("Peg 2");
-				ButtonType btnType3 = new ButtonType("Peg 3");
-				ButtonType btnType4 = new ButtonType("Peg 4");
-				ButtonType btnType5 = new ButtonType("Confirm Move");
-				ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
-				buttonBar.setStyle("-fx-font-size: 15px;"
-						+ "-fx-background-color: #4472C4;");
-				buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
-				dialog.getDialogPane().getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4, btnType5);
-				Optional result = dialog.showAndWait();
-				if (result.get() == btnType1) {
-					if( board1.isStart(plyrs1.getPeg1())){
+				if (board1.getTurn() == 1) {
+					ButtonType btnType1 = new ButtonType("Peg 1");
+					ButtonType btnType2 = new ButtonType("Peg 2");
+					ButtonType btnType3 = new ButtonType("Peg 3");
+					ButtonType btnType4 = new ButtonType("Peg 4");
+					ButtonType btnType5 = new ButtonType("Confirm Move");
+					ButtonBar buttonBar = (ButtonBar) dialog.getDialogPane().lookup(".button-bar");
+					buttonBar.setStyle("-fx-font-size: 15px;"
+							+ "-fx-background-color: #4472C4;");
+					buttonBar.getButtons().forEach(b -> b.setStyle("-fx-font-family: \"Andalus\";"));
+					dialog.getDialogPane().getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4, btnType5);
+					Optional result = dialog.showAndWait();
+					if (result.get() == btnType1) {
 						if(card == "1" | card == "2"){                        
+							if(board1.isStart(plyrs1.getPeg1())){
+								root.getChildren().remove(pegb1);
+								board1.start(plyrs1.getPeg1());
+								root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
+								System.out.println("1 & move");
+								plyrs1.easyNice(board1,d);
+								plyrs1.hardNice(board1,d);
+								plyrs1.hardMean(board1,d);
+								plyrs1.easyMean(board1,d);
+								System.out.println("array length:"+plyrs1.getPeg5());
+								if(plyrs1.getPeg5()!=null){
+									root.getChildren().remove(plyrs1.getComputerPeg().getGpeg());
+									root.add(plyrs1.getComputerPeg().getGpeg(), plyrs1.getComputerPeg().getY(), plyrs1.getComputerPeg().getX());
+								}
+							}else{
+								root.getChildren().remove(pegb1);
+								board1.movePeg(plyrs1.getPeg1(), d);
+								root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
+								System.out.println("other & move");
+							}
+						}else{
 							root.getChildren().remove(pegb1);
-							board1.start(plyrs1.getPeg1());
+							board1.movePeg(plyrs1.getPeg1(), d);
 							root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
+							System.out.println("other & move");
 						}
 					}
-					else{
-						System.out.println("gfgfsgsdfdas");
-						root.getChildren().remove(pegb1);
-						board1.movePeg(plyrs1.getPeg1(), d);
-						root.add(pegb1, plyrs1.peg1.getY(), plyrs1.peg1.getX());
-					}
-
-				}
-				else if (result.get() == btnType2) {
-					if( board1.isStart(plyrs1.getPeg2())){
-						if(card == "1" | card == "2"){                        
+					else if (result.get() == btnType2) {
+						if(card == "1" | card == "2"){
+							if(board1.isStart(plyrs1.getPeg2())){
+								root.getChildren().remove(pegb2);
+								board1.start(plyrs1.getPeg2());
+								root.add(pegb1, plyrs1.peg2.getY(), plyrs1.peg2.getX());
+								System.out.println("1 & move");
+							}else{
+								root.getChildren().remove(pegb2);
+								board1.movePeg(plyrs1.getPeg1(), d);
+								root.add(pegb1, plyrs1.peg2.getY(), plyrs1.peg2.getX());
+								System.out.println("other & move");
+							}
+						}else{
 							root.getChildren().remove(pegb2);
-							board1.start(plyrs1.getPeg2());
+							board1.movePeg(plyrs1.getPeg2(), d);
 							root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
+							System.out.println("other & move");
 						}
-					}
-					else{
-						System.out.println("gfgfsgsdfdas");
-						root.getChildren().remove(pegb2);
-						board1.movePeg(plyrs1.getPeg2(), d);
-						root.add(pegb2, plyrs1.peg2.getY(), plyrs1.peg2.getX());
-					}
-
-				}
-				else if (result.get() == btnType3) {
-					if( board1.isStart(plyrs1.getPeg3())){
+					}else if (result.get() == btnType3) {
 						if(card == "1" | card == "2"){                        
+							if(board1.isStart(plyrs1.getPeg3())){
+								root.getChildren().remove(pegb3);
+								board1.start(plyrs1.getPeg3());
+								root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
+								System.out.println("1 & move");
+							}else{
+								root.getChildren().remove(pegb3);
+								board1.movePeg(plyrs1.getPeg3(), d);
+								root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
+								System.out.println("other & move");
+							}
+						}else{
 							root.getChildren().remove(pegb3);
-							board1.start(plyrs1.getPeg3());
+							board1.movePeg(plyrs1.getPeg3(), d);
 							root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
+							System.out.println("other & move");
 						}
-					}
-					else{
-						System.out.println("gfgfsgsdfdas");
-						root.getChildren().remove(pegb3);
-						board1.movePeg(plyrs1.getPeg3(), d);
-						root.add(pegb3, plyrs1.peg3.getY(), plyrs1.peg3.getX());
-					}
-
-				}else if (result.get() == btnType4) {
-					if( board1.isStart(plyrs1.getPeg4())){
+					}else if (result.get() == btnType4) {
 						if(card == "1" | card == "2"){                        
-							root.getChildren().remove(pegb4);
-							board1.start(plyrs1.getPeg4());
-							root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+							if(board1.isStart(plyrs1.getPeg4())){
+								root.getChildren().remove(pegb4);
+								board1.start(plyrs1.getPeg4());
+								root.add(pegb1, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+								System.out.println("1 & move");
+							}else{
+								root.getChildren().remove(pegb4);
+								board1.movePeg(plyrs1.getPeg4(), d);
+								root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+								System.out.println("other & move");
+							}
+						}else{
+							root.getChildren().remove(pegb1);
+							board1.movePeg(plyrs1.getPeg4(), d);
+							root.add(pegb1, plyrs1.peg4.getY(), plyrs1.peg4.getX());
+							System.out.println("other & move");
 						}
 					}
-					else{
-						System.out.println("gfgfsgsdfdas");
-						root.getChildren().remove(pegb4);
-						board1.movePeg(plyrs1.getPeg4(), d);
-						root.add(pegb4, plyrs1.peg4.getY(), plyrs1.peg4.getX());
-					}
-
-				}else{
-					System.out.println("gfgfsgsdfdas");				
 				}
-
-				//                 String name = d.draw();
-				//				 Image card;
-				//					try {
-				//						card = new Image(new FileInputStream(/Users/apple/Documents/GitHub/Sorry/src/card"+name+".png"));
-				//						Label cardL = new Label();
-				//					    cardL.setGraphic(new ImageView(card));
-				//					    cardL.setPrefHeight(20);
-				//					    cardL.setPrefWidth(20);
-				//					    root.add(cardL,  9,  9);
-				//					} catch (FileNotFoundException e) {
-				//						// TODO Auto-generated catch block
-				//						e.printStackTrace();
-				//					}
 			}
 			// board1.movePeg(peg1,d);
 
@@ -487,7 +583,18 @@ public class Canvas extends Pane {
 				alert.getButtonTypes().setAll(btnType1, btnType2, btnType3, btnType4);
 				Optional result = alert.showAndWait();
 				if (result.get() == btnType1) {
-					System.out.println("Hello World!");
+					draw.setDisable(true);
+					new java.util.Timer().schedule( 
+							new java.util.TimerTask() {
+								@Override
+								public void run() {
+									System.out.println("Hello World!");
+									draw.setDisable(false);
+								}
+							}, 
+							5000
+							);
+
 				} else if (result.get() == btnType2) {
 					System.out.println("Hello World!");
 				} else if (result.get() == btnType3) {
@@ -534,10 +641,4 @@ public class Canvas extends Pane {
 		VBox vbox1 = new VBox(root, hbox3, hbox4);
 		this.getChildren().addAll(vbox1);
 	}
-
-	/**
-	 * Set up key pressed events. Fill in the key handler to manipulate the
-	 * shapes on the screen.
-	 */
-	//System.out.println("Keys set up")
 }

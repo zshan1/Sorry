@@ -28,6 +28,7 @@ public class Players {
 	String behavior3 = "";
 	// get color
 	String color = "";
+	pegs computerPeg;
 
 	// Initialize the pegs in default colors
 	// Blue pegs (P1)
@@ -375,7 +376,13 @@ public class Players {
 
             for (int i = 0; i < player2().length ; i++) {
             	if(b.getNiceMove() <= 0) {
+            		if (b.isStart(player2()[i])){
+            			b.start(player2()[i]);
+            		}
+            		else{
 					b.movePeg(player2()[i], d.getDrawnCard().getVal(), true);
+            		}
+					setComputerPeg(player2()[i]);
 					//b.setNiceMove(0);
 				}
 
@@ -387,6 +394,7 @@ public class Players {
 			for (int i = 0; i < player3().length ; i++) {
 				if(b.getNiceMove() <= 0) {
 					b.movePeg(player3()[i], d.getDrawnCard().getVal(), true);
+					setComputerPeg(player3()[i]);
 					//b.setNiceMove(0);
 				}
 
@@ -397,6 +405,7 @@ public class Players {
 			for (int i = 0; i < player4().length ; i++) {
 				if(b.getNiceMove() <= 0) {
 					b.movePeg(player4()[i], d.getDrawnCard().getVal(), true);
+					setComputerPeg(player4()[i]);
 					//b.setNiceMove(0);
 				}
 
@@ -418,6 +427,7 @@ public class Players {
                 int randomIndex = generator.nextInt(player2().length);
 				if(b.getNiceMove() <= 0) {
 					b.movePeg(player2()[randomIndex], d.getDrawnCard().getVal(), true);
+					setComputerPeg(player2()[randomIndex]);
 					//b.setNiceMove(0);
 				}
 
@@ -431,6 +441,7 @@ public class Players {
                 int randomIndex = generator.nextInt(player2().length);
 				if(b.getNiceMove() <= 0) {
 					b.movePeg(player3()[randomIndex], d.getDrawnCard().getVal(), true);
+					setComputerPeg(player3()[randomIndex]);
 					//b.setNiceMove(0);
 				}
 
@@ -443,6 +454,7 @@ public class Players {
                 int randomIndex = generator.nextInt(player2().length);
 				if(b.getNiceMove() <= 0) {
 					b.movePeg(player4()[randomIndex], d.getDrawnCard().getVal(), true);
+					setComputerPeg(player4()[randomIndex]);
 					//b.setNiceMove(0);
 				}
 
@@ -465,7 +477,15 @@ public class Players {
 
             for (int i = 0; i < player2().length ; i++) {
                 if(b.getMeanMove() <= 0) {
-                    b.movePeg(player2()[i], d.getDrawnCard().getVal(), false);
+                		if (b.isStart(player2()[i])==true){
+                			System.out.println("1error1");
+                			b.start(player2()[i]);
+                		}
+                		else{
+                			System.out.println("1error2");
+                			b.movePeg(player2()[i], d.getDrawnCard().getVal(), true);
+                		}
+					setComputerPeg(player2()[i]);
                     //b.setNiceMove(0);
                 }
 
@@ -476,7 +496,15 @@ public class Players {
         if (b.getTurn() == 3 && player3()[1].getdifficulty() == "hard" && player3()[1].getbehavior() == "mean") {
             for (int i = 0; i < player3().length ; i++) {
                 if(b.getMeanMove() <= 0) {
-                    b.movePeg(player3()[i], d.getDrawnCard().getVal(), false);
+                	if (b.isStart(player2()[i])==true){
+            			System.out.println("2error1");
+            			b.start(player3()[i]);
+            		}
+            		else{
+            			System.out.println("2error2");
+            			b.movePeg(player3()[i], d.getDrawnCard().getVal(), true);
+            		}
+					setComputerPeg(player3()[i]);
                     //b.setNiceMove(0);
                 }
 
@@ -486,7 +514,15 @@ public class Players {
         if (b.getTurn() == 4 && player4()[1].getdifficulty() == "hard" && player4()[1].getbehavior() == "mean") {
             for (int i = 0; i < player4().length ; i++) {
                 if(b.getMeanMove() <= 0) {
-                    b.movePeg(player4()[i], d.getDrawnCard().getVal(),false);
+                	if (b.isStart(player2()[i])==true){
+            			System.out.println("3error1");
+            			b.start(player4()[i]);
+            		}
+            		else{
+            			System.out.println("3error2");
+            			b.movePeg(player4()[i], d.getDrawnCard().getVal(), true);
+            		}
+					setComputerPeg(player4()[i]);
                     //b.setNiceMove(0);
                 }
 
@@ -510,6 +546,7 @@ public class Players {
                 int randomIndex = generator.nextInt(player2().length);
                 if(b.getMeanMove() <= 0) {
                     b.movePeg(player2()[randomIndex], d.getDrawnCard().getVal(), false);
+					setComputerPeg(player2()[randomIndex]);
                     //b.setNiceMove(0);
                 }
 
@@ -523,6 +560,7 @@ public class Players {
                 int randomIndex = generator.nextInt(player2().length);
                 if(b.getMeanMove() <= 0) {
                     b.movePeg(player3()[randomIndex], d.getDrawnCard().getVal(), false);
+					setComputerPeg(player3()[randomIndex]);
                     //b.setNiceMove(0);
                 }
 
@@ -535,6 +573,7 @@ public class Players {
                 int randomIndex = generator.nextInt(player2().length);
                 if(b.getMeanMove() <= 0) {
                     b.movePeg(player4()[randomIndex], d.getDrawnCard().getVal(),false);
+					setComputerPeg(player4()[randomIndex]);
                     //b.setNiceMove(0);
                 }
 
@@ -547,4 +586,13 @@ public class Players {
 
 
     }
+
+	public pegs getComputerPeg() {
+		return computerPeg;
+	}
+
+	public void setComputerPeg(pegs computerPeg) {
+		this.computerPeg = computerPeg;
+	}
 }
+

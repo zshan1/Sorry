@@ -1,5 +1,8 @@
 package sorry;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+
 public class pegs {
 	private Color color;
 	private int x;
@@ -7,6 +10,7 @@ public class pegs {
 	private String difficulty;
 	private String behavior;
 	private boolean isSafeStatus;
+	private Label peglabel;
 	
 	public enum Color {
 		RED, GREEN, BLUE, YELLOW
@@ -59,6 +63,13 @@ public class pegs {
 		return color;
 	}
  
+    public void setGpeg (Label x){
+    	this.peglabel = x;
+    }
+    
+    public Label getGpeg(){
+    	return peglabel;
+    }
    
 	
 }

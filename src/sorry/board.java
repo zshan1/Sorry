@@ -146,12 +146,6 @@ public class board {
         }else{
             System.out.println("Peg cant move");
         }
-        if(turn == 5){
-            setTurn(1);
-        }
-        else{
-            turn++;
-        }
     }
 
 
@@ -324,12 +318,7 @@ public class board {
 		}else{
 			System.out.println("Peg cant move");
 		}
-		if(turn == 5){
-			setTurn(1);
-		}
-		else{
-			turn++;
-		}
+
 	}
 
 
@@ -710,16 +699,16 @@ public class board {
 
 	public void setHome(pegs peg){
 		if (peg.getColor()== Color.RED){
-			addPeg(peg,1,4);
+			addPeg(peg,7,2);
 		}
 		else if (peg.getColor()== Color.GREEN){
-			addPeg(peg,11,1);
+			addPeg(peg,14,8);
 		}
 		else if (peg.getColor()== Color.BLUE){
-			addPeg(peg,4,14);
+			addPeg(peg,2,8);
 		}
 		else if (peg.getColor()== Color.YELLOW){
-			addPeg(peg,14,11);
+			addPeg(peg,8,13);
 		}
 	}
 
@@ -773,17 +762,17 @@ public class board {
 					return false;
 				}
 		}
-                else if(peg.getColor()==Color.YELLOW){
-			if (peg.getX()==11&&peg.getY()==13){
+          else if(peg.getColor()==Color.YELLOW){
+			if (peg.getX()==13&&peg.getY()==11){
 				return true;
 			}
-			else if (peg.getX()==11&&peg.getY()==14){
+			else if (peg.getX()==14&&peg.getY()==11){
 				return true;
 			}
-			else if (peg.getX()==10&&peg.getY()==13){
+			else if (peg.getX()==13&&peg.getY()==10){
 				return true;
 			}
-			else if (peg.getX()==10&&peg.getY()==14){
+			else if (peg.getX()==14&&peg.getY()==10){
 				return true;
 			}
 			else{
@@ -829,16 +818,16 @@ public class board {
 	}
 	
 	public boolean isHome(pegs peg){
-		if(peg.getColor()==Color.RED && peg.getX()==6&&peg.getY()==2){
+		if(peg.getColor()==Color.RED && peg.getX()==7&&peg.getY()==2){
 			return true;
 		}
-		if(peg.getColor()==Color.BLUE && peg.getX()==2&&peg.getY()==9){
+		if(peg.getColor()==Color.BLUE && peg.getX()==2&&peg.getY()==8){
 			return true;
 		}
-		if(peg.getColor()==Color.YELLOW && peg.getX()==9&&peg.getY()==13){
+		if(peg.getColor()==Color.YELLOW && peg.getX()==8&&peg.getY()==13){
 			return true;
 		}
-		if(peg.getColor()==Color.GREEN && peg.getX()==13&&peg.getY()==6){
+		if(peg.getColor()==Color.GREEN && peg.getX()==14&&peg.getY()==6){
 			return true;
 		}else{
 			return false;
@@ -901,12 +890,9 @@ public class board {
 		return turn;
 	}
 	public void setTurn(int t){
-	    if(getTurn() > 4){
-	        turn = 1;
-        }
-        else {
+	   
             turn = t;
-        }
+        
 	}
 	boolean getBumpCheck(){
 		return bumpcheck;
